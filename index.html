@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《失控进化》CBT3 安全&舆情复盘</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#f5f6fa; --bg2:#ffffff; --bg3:#eef0f7; --border:#dde1ee;
+  --text:#1a1d2e; --text-dim:#5a5f7a;
+  --accent:#e63757; --accent2:#1a56db;
+  --gold:#d97706; --green:#059669; --red:#dc2626; --blue:#2563eb; --purple:#7c3aed; --cyan:#0891b2;
+  --shadow:0 2px 12px rgba(30,40,80,.08); --shadow-lg:0 8px 32px rgba(30,40,80,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.header{background:linear-gradient(135deg,#1a1d2e 0%,#2d3561 50%,#1a56db 100%);padding:52px 0 44px;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold),var(--accent));}
+.container{max-width:1200px;margin:0 auto;padding:0 28px;}
+.header-wrap{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.game-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;padding:4px 14px;border-radius:4px;margin-bottom:14px;}
+.header h1{font-size:36px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px;}
+.header h1 span{color:#fbbf24;}
+.header-sub{font-size:14px;color:rgba(255,255,255,.65);letter-spacing:1px;}
+.header-stats{display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.hstat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:10px 18px;font-size:13px;color:rgba(255,255,255,.7);white-space:nowrap;}
+.hstat strong{color:#fbbf24;font-size:16px;}
+.nav{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(30,40,80,.08);}
+.nav-list{display:flex;overflow-x:auto;gap:0;}
+.nav-list::-webkit-scrollbar{height:2px;}
+.nav-list::-webkit-scrollbar-thumb{background:var(--accent);}
+.nav-a{padding:14px 18px;font-size:13px;color:var(--text-dim);white-space:nowrap;border-bottom:3px solid transparent;text-decoration:none;transition:all .2s;cursor:pointer;font-weight:500;}
+.nav-a:hover,.nav-a.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(230,55,87,.04);}
+.section{padding:52px 0;border-bottom:1px solid var(--border);}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:32px;}
+.sec-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0;}
+.sec-title{font-size:22px;font-weight:800;color:var(--text);}
+.sec-title em{color:var(--accent);font-style:normal;}
+.sec-sub{font-size:13px;color:var(--text-dim);margin-top:3px;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px;}
+.scard{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow);}
+.scard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;border-radius:0 0 14px 14px;}
+.scard.c-red::after{background:var(--red);} .scard.c-green::after{background:var(--green);} .scard.c-blue::after{background:var(--blue);} .scard.c-gold::after{background:var(--gold);} .scard.c-purple::after{background:var(--purple);}
+.scard-num{font-size:36px;font-weight:900;line-height:1;margin-bottom:6px;}
+.scard.c-red .scard-num{color:var(--red);} .scard.c-green .scard-num{color:var(--green);} .scard.c-blue .scard-num{color:var(--blue);} .scard.c-gold .scard-num{color:var(--gold);} .scard.c-purple .scard-num{color:var(--purple);}
+.scard-label{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.qa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;}
+.qa-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.qa-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--gold));}
+.qa-q{font-size:13px;color:var(--text);font-weight:700;margin-bottom:8px;display:flex;align-items:flex-start;gap:8px;}
+.qa-q::before{content:'Q';min-width:20px;height:20px;background:var(--accent);color:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;margin-top:1px;flex-shrink:0;}
+.qa-a{font-size:13px;color:var(--text-dim);line-height:1.7;padding-left:28px;}
+.hl{color:var(--accent);font-weight:700;} .hl-g{color:var(--green);font-weight:700;} .hl-gold{color:var(--gold);font-weight:700;} .hl-b{color:var(--blue);font-weight:700;}
+.chart-box{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px;box-shadow:var(--shadow);}
+.chart-box img{width:100%;height:auto;border-radius:8px;display:block;}
+.chart-caption{font-size:12px;color:var(--text-dim);text-align:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+.chart-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.chart-canvas-wrap{position:relative;width:100%;}
+.timeline{position:relative;padding-left:34px;}
+.timeline::before{content:'';position:absolute;left:11px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--blue),transparent);}
+.tl-item{position:relative;margin-bottom:20px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;transition:border-color .2s,box-shadow .2s;box-shadow:var(--shadow);}
+.tl-item:hover{border-color:var(--accent);box-shadow:var(--shadow-lg);}
+.tl-item::before{content:'';position:absolute;left:-28px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent);}
+.tl-date{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.tl-tag{background:rgba(230,55,87,.1);border:1px solid rgba(230,55,87,.25);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--accent);}
+.tl-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.tl-desc{font-size:13px;color:var(--text-dim);line-height:1.7;}
+.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;margin-top:8px;}
+.badge-down{background:rgba(220,38,38,.1);color:var(--red);border:1px solid rgba(220,38,38,.2);}
+.badge-up{background:rgba(5,150,105,.1);color:var(--green);border:1px solid rgba(5,150,105,.2);}
+.badge-warn{background:rgba(217,119,6,.1);color:var(--gold);border:1px solid rgba(217,119,6,.2);}
+.pain-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.pain-table thead tr{background:var(--text);}
+.pain-table th{padding:13px 16px;text-align:left;font-size:12px;font-weight:700;color:#fff;letter-spacing:1px;}
+.pain-table td{padding:13px 16px;font-size:13px;color:var(--text-dim);line-height:1.6;border-bottom:1px solid var(--border);vertical-align:top;background:#fff;}
+.pain-table tbody tr:hover td{background:var(--bg3);}
+.feedback-table-wrap{overflow-x:auto;border-radius:12px;box-shadow:var(--shadow);margin-bottom:24px;}
+.feedback-table{width:100%;border-collapse:collapse;min-width:1000px;}
+.feedback-table thead tr{background:var(--text);}
+.feedback-table th{padding:12px 14px;text-align:left;font-size:12px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.1);}
+.feedback-table th:last-child{border-right:none;}
+.feedback-table td{padding:12px 14px;font-size:12px;color:var(--text-dim);line-height:1.65;border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;background:#fff;}
+.feedback-table td:last-child{border-right:none;}
+.feedback-table tbody tr:hover td{background:#f0f4ff;}
+.feedback-table .status-p0 td{background:#fff8f8;}
+.feedback-table .status-p1 td{background:#fffdf0;}
+.feedback-table .status-p2 td{background:#f6fff9;}
+.tag-p0{display:inline-block;background:#fee2e2;color:var(--red);border:1px solid #fca5a5;border-radius:4px;padding:2px 10px;font-size:11px;font-weight:800;}
+.tag-p1{display:inline-block;background:#fef3c7;color:var(--gold);border:1px solid #fcd34d;border-radius:4px;padding:2px 10px;font-size:11px;font-weight:800;}
+.tag-p2{display:inline-block;background:#d1fae5;color:var(--green);border:1px solid #6ee7b7;border-radius:4px;padding:2px 10px;font-size:11px;font-weight:800;}
+.issue-title{font-weight:700;color:var(--text);font-size:13px;margin-bottom:4px;}
+.bullet-list{list-style:none;padding:0;}
+.bullet-list li{padding:2px 0 2px 14px;position:relative;}
+.bullet-list li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:14px;}
+.sent-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow);}
+.sent-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.sent-title{font-size:14px;font-weight:700;color:var(--text);}
+.sent-date{font-size:12px;color:var(--text-dim);background:var(--bg3);padding:3px 10px;border-radius:4px;}
+.sent-bars{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:8px;gap:2px;}
+.bar-p{background:var(--green);border-radius:5px 0 0 5px;} .bar-n{background:var(--blue);} .bar-neg{background:var(--red);border-radius:0 5px 5px 0;}
+.sent-labels{display:flex;gap:14px;font-size:12px;flex-wrap:wrap;}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle;}
+.sent-note{font-size:13px;color:var(--text-dim);margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--bg3);line-height:1.7;}
+.appeal-box{background:linear-gradient(135deg,#fff5f5,#fff);border:1px solid #fca5a5;border-radius:14px;padding:28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:24px;box-shadow:var(--shadow);}
+.appeal-big{text-align:center;flex-shrink:0;}
+.appeal-num{font-size:54px;font-weight:900;color:var(--accent);line-height:1;}
+.appeal-unit{font-size:13px;color:var(--text-dim);margin-top:4px;}
+.appeal-div{width:1px;height:60px;background:var(--border);flex-shrink:0;}
+.appeal-detail{flex:1;min-width:200px;font-size:14px;color:var(--text-dim);line-height:1.8;}
+.strat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.strat-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow);}
+.strat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--blue);}
+.strat-icon{font-size:28px;margin-bottom:10px;display:block;}
+.strat-name{font-size:14px;font-weight:800;color:var(--blue);margin-bottom:10px;}
+.strat-list{list-style:none;}
+.strat-list li{font-size:12px;color:var(--text-dim);padding:5px 0 5px 16px;position:relative;line-height:1.5;border-bottom:1px solid var(--border);}
+.strat-list li:last-child{border-bottom:none;}
+.strat-list li::before{content:'›';position:absolute;left:0;color:var(--accent);font-weight:700;}
+.goal-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:28px;}
+.goal-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;box-shadow:var(--shadow);}
+.goal-icon{font-size:30px;margin-bottom:8px;}
+.goal-label{font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+.goal-val{font-size:22px;font-weight:900;color:var(--blue);}
+.chat-box{background:linear-gradient(135deg,#eff6ff,#fff);border:1px solid #bfdbfe;border-radius:12px;padding:22px 24px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;box-shadow:var(--shadow);}
+.chat-pct{font-size:50px;font-weight:900;color:var(--blue);line-height:1;flex-shrink:0;}
+.chat-desc{flex:1;min-width:200px;font-size:14px;color:var(--text-dim);line-height:1.7;}
+.action-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;}
+.action-list li{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px 12px 38px;font-size:13px;color:var(--text-dim);line-height:1.6;position:relative;box-shadow:var(--shadow);}
+.action-list li::before{content:attr(data-n);position:absolute;left:12px;top:12px;width:18px;height:18px;background:var(--accent);border-radius:50%;font-size:11px;font-weight:900;color:#fff;text-align:center;line-height:18px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+@media(max-width:700px){.two-col{grid-template-columns:1fr;}}
+.divider{height:1px;background:var(--border);margin:28px 0;}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 18px;font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:20px;}
+.footer{background:var(--text);padding:24px 0;text-align:center;font-size:13px;color:rgba(255,255,255,.5);}
+::-webkit-scrollbar{width:6px;height:6px;} ::-webkit-scrollbar-track{background:var(--bg3);} ::-webkit-scrollbar-thumb{background:#c5cae9;border-radius:3px;} ::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+@media(max-width:768px){.header h1{font-size:26px;}.scard-num{font-size:28px;}.appeal-num,.chat-pct{font-size:36px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="header-wrap">
+      <div class="header-left">
+        <div class="game-tag">社区舆情侧报告</div>
+        <h1>《失控进化》CBT3<br><span>安全 & 舆情复盘</span></h1>
+        <p class="header-sub">终极测试阶段 · 2026.2.3 — 3.31</p>
+      </div>
+      <div class="header-stats">
+        <div class="hstat">黑产申诉总量 <strong>960条</strong></div>
+        <div class="hstat">申诉成功率 <strong>86.6%</strong></div>
+        <div class="hstat">安全沟通内容 <strong>13条</strong></div>
+        <div class="hstat">安全站渗透率 <strong>4.6%</strong></div>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="nav">
+  <div class="container">
+    <div class="nav-list">
+      <a class="nav-a active" href="#overview">总览结论</a>
+      <a class="nav-a" href="#timeline">节点复盘</a>
+      <a class="nav-a" href="#cheat">外挂专题</a>
+      <a class="nav-a" href="#team">非法组队</a>
+      <a class="nav-a" href="#chat">端内聊天</a>
+      <a class="nav-a" href="#feedback">玩家反馈</a>
+      <a class="nav-a" href="#appeal">黑产申诉</a>
+      <a class="nav-a" href="#social">社媒沟通</a>
+      <a class="nav-a" href="#obt">OBT规划</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<section class="section" id="overview">
+  <div class="sec-head"><div class="sec-num">总</div><div><div class="sec-title">总体数据概览 · <em>核心结论</em></div><div class="sec-sub">对比 CBT2 及竞品，失控进化 CBT3 安全舆情综合评估</div></div></div>
+  <div class="stats-row">
+    <div class="scard c-gold"><div class="scard-num">960</div><div class="scard-label">CBT3全期黑产申诉总量</div></div>
+    <div class="scard c-green"><div class="scard-num">86.6%</div><div class="scard-label">申诉成功率（持续中）</div></div>
+    <div class="scard c-red"><div class="scard-num">60%</div><div class="scard-label">社媒安全内容负面率</div></div>
+    <div class="scard c-blue"><div class="scard-num">53.19%</div><div class="scard-label">端内聊天安全问题占比</div></div>
+    <div class="scard c-purple"><div class="scard-num">4.6%</div><div class="scard-label">安全站大盘渗透率</div></div>
+  </div>
+  <div class="qa-grid">
+    <div class="qa-card"><div class="qa-q">对比其他游戏测试阶段，失控进化的安全舆情怎么样？</div><div class="qa-a">处于<span class="hl">中等偏下</span>，对比竞品测试期占比、绝对值处于均衡中游水平，但<span class="hl">整体负面情绪比重过大</span></div></div>
+    <div class="qa-card"><div class="qa-q">为什么我们感受到社区的安全舆情如此激烈？</div><div class="qa-a"><span class="hl">负面情绪占比大</span>，玩家对其他活动、玩法讨论量不足，导致<span class="hl">安全相关问题显化突出</span></div></div>
+    <div class="qa-card"><div class="qa-q">对比CBT2，为什么安全非法组队舆情更大了？</div><div class="qa-a"><span class="hl">不了解rust ip灰色社交属性的新玩家涌入</span>，加之<span class="hl">策略调整后误封讨论影响面扩大</span></div></div>
+  </div>
+  <div class="chart-box" style="margin-top:24px;">
+    <div class="chart-title">📊 CBT2 vs CBT3 安全舆情对比</div>
+    <div class="chart-canvas-wrap" style="height:320px;"><canvas id="chartCBT2vsCBT3"></canvas></div>
+    <div class="chart-caption">2025.9.26–11.16（CBT2）vs 2026.2.3–3.30（CBT3）· 鼠标悬停查看详细数据</div>
+  </div>
+</section>
+<section class="section" id="timeline">
+  <div class="sec-head"><div class="sec-num">1</div><div><div class="sec-title">节点趋势复盘 · <em>整体安全舆情走势</em></div><div class="sec-sub">CBT3 全程 8 周安全负面声量、占比与口碑分数变化</div></div></div>
+  <div class="chart-box">
+    <div class="chart-title">📈 整体安全舆情声量、占比、口碑分数数据对比（按周）</div>
+    <div class="chart-canvas-wrap" style="height:340px;"><canvas id="chartOverallTrend"></canvas></div>
+    <div class="chart-caption">蓝柱=安全负面声量 | 橙线=声量占比(%) | 紫线=口碑分数 · 鼠标悬停查看详细数据</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">节点1 · 2.3 <span class="tl-tag">CBT3上线</span></div><div class="tl-title">CBT3上线 + 安全站联合宣发</div><div class="tl-desc">同步更新安全站并与ACE进行联合宣发，整体舆情声量随放号规模扩大而略有上升</div><span class="badge badge-warn">声量平稳上升</span></div>
+    <div class="tl-item"><div class="tl-date">节点2 · 2.25 <span class="tl-tag">危机爆发</span></div><div class="tl-title">新黑产外挂出现 → 负面声量急剧扩大</div><div class="tl-desc">安全相关负面声量急剧扩大，口碑指数明显下滑。<br>应对：<span class="hl">启动专项下架违规视频，安全玩家沟通信息推广专线</span></div><span class="badge badge-down">口碑明显下滑</span></div>
+    <div class="tl-item"><div class="tl-date">节点3 · 3.4 <span class="tl-tag">策略调整</span></div><div class="tl-title">测试W5策略调整 → 口碑回暖</div><div class="tl-desc">基于整体策略调整，针对性舆情维护，<span class="hl-g">口碑回暖</span>，安全问题负面声量高于测试初期但明显下降</div><span class="badge badge-up">口碑回暖</span></div>
+    <div class="tl-item"><div class="tl-date">节点4 · 3.11 <span class="tl-tag">再次危机</span></div><div class="tl-title">非组打击策略升级 → 误封话题激增</div><div class="tl-desc">依托战报的封禁策略导致<span class="hl">误封、非组相关话题讨论激增</span>，口碑再次下滑。<br>应对：定点与安全同学沟通，调整策略并进行社媒发声</div><span class="badge badge-down">口碑再次下滑</span></div>
+    <div class="tl-item"><div class="tl-date">测试末期 <span class="tl-tag">复盘教训</span></div><div class="tl-title">末期正面叙事缺失 → 外挂问题占比突出</div><div class="tl-desc">缺乏类似"瓦手公测定档"的大规模正面叙事，玩家关注集中、负面情绪积累。<br><span class="hl-gold">汲取教训：OB后赛季末期提前释放前瞻内容，及时公开赛季总结，引导正面叙事</span></div><span class="badge badge-warn">教训已总结</span></div>
+  </div>
+  <div class="chart-box" style="margin-top:24px;">
+    <div class="chart-title">📊 测试末期竞品外挂内容量对比（倒数W3/W2/W1）</div>
+    <div class="chart-canvas-wrap" style="height:300px;"><canvas id="chartCompetitor"></canvas></div>
+    <div class="chart-caption">三角洲行动 / 瓦手终测 / 失控进化 — 测试末期外挂讨论声量与占比对比 · 鼠标悬停查看详细数据</div>
+  </div>
+</section>
+
+<section class="section" id="cheat">
+  <div class="sec-head"><div class="sec-num">2</div><div><div class="sec-title">外挂专题复盘 · <em>主要痛点与处理策略</em></div></div></div>
+  <div class="two-col">
+    <div class="chart-box" style="margin-bottom:0">
+      <div class="chart-title">📈 每周外挂讨论声量及占比、口碑趋势（W1–W8）</div>
+      <div class="chart-canvas-wrap" style="height:260px;"><canvas id="chartCheatWeekly"></canvas></div>
+    </div>
+    <div class="chart-box" style="margin-bottom:0">
+      <div class="chart-title">📊 游戏外挂数据竞品横向对比</div>
+      <div class="chart-canvas-wrap" style="height:260px;"><canvas id="chartCheatCompare"></canvas></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <table class="pain-table">
+    <thead><tr><th style="width:18%">主要痛点</th><th style="width:38%">情况说明</th><th style="width:44%">处理策略</th></tr></thead>
+    <tbody>
+      <tr><td><span class="hl">👁 玩家感知引导弱</span></td><td>玩家因缺乏明确的申诉反馈闭环，或看不到处罚结果与治理进展，导致在任何热点内容下都会转而追问外挂</td><td>紧密监测舆情数据，提炼关键词，<span class="hl-g">通过端外社媒发声手段强化玩家处理感知</span></td></tr>
+      <tr><td><span class="hl">🏛 官方公信力弱化</span></td><td>目前只公开了数据、表决心类沟通、措施手段，缺少明确判定标准给到玩家</td><td>已公开梯度处罚内容，<span class="hl-g">透明化强化了处罚感知，并将负面表述转向玩法建议</span></td></tr>
+      <tr><td><span class="hl">📢 缺少正向叙事</span></td><td>社区去中心化的网络环境下，需要玩家公信力强的人进行引导，需要输出UGC内容</td><td>以线下打击外挂团队为切入点开展社媒整合推广；后续在UGC内容中增加正向叙事与灰色社交的占比</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section" id="team">
+  <div class="sec-head"><div class="sec-num">3</div><div><div class="sec-title">非法组队专题 · <em>舆情节点监测</em></div></div></div>
+  <div class="chart-box">
+    <div class="chart-title">📈 非法组队讨论声量与占比趋势（W1–W8）</div>
+    <div class="chart-canvas-wrap" style="height:300px;"><canvas id="chartTeamWeekly"></canvas></div>
+    <div class="chart-caption">W6（3.10–3.16）达到周期峰值，占比 7.79% · 鼠标悬停查看详细数据</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">W6 · 3.10–3.16 <span class="tl-tag">峰值</span></div><div class="tl-title">非法组队2.0策略引发"误封"讨论峰值</div><div class="tl-desc">基于战报的处罚策略引发大量玩家对"误封"的讨论，达到周期内峰值。<br>应对：开展专项维护，收集案例进行策略反查，输出阶段性公告进行玩家沟通。<br><span class="hl-g">策略调整后公开梯度处罚公告 → 声量降低，口碑回暖</span></div><span class="badge badge-down">周期内峰值</span></div>
+    <div class="tl-item"><div class="tl-date">后续规划 <span class="tl-tag">OBT节点</span></div><div class="tl-title">灰色社交认知建设 + 误封信任挽回</div><div class="tl-desc">玩家对"灰色社交"的感知仍不清晰，后续将开展<span class="hl">专项UGC内容铺设教育</span>。<br>误封问题将在OBT策略调整升级、新玩家涌入等节点重新沟通，挽回信任。</div><span class="badge badge-warn">待执行</span></div>
+  </div>
+</section>
+<section class="section" id="chat">
+  <div class="sec-head"><div class="sec-num">4</div><div><div class="sec-title">端内聊天分析 · <em>2026.2.3 — 3.18</em></div></div></div>
+  <div class="chat-box">
+    <div class="chat-pct">53.19%</div>
+    <div class="chat-desc">安全问题占全量局内聊天讨论比例<br>核心原因：<span class="hl">长单局的社交聊天 + 公屏戾气叫嚣</span>放大了玩家对安全类问题的感知，部分"炫耀黑产"行为严重影响战局生态</div>
+  </div>
+  <ul class="action-list">
+    <li data-n="1">对账号实际状态进行反查：部分叫嚣账号已被封禁并公示，部分内部渠道、不实信息已进行内部KOC审查</li>
+    <li data-n="2">调整文本策略：目前已拉起文本策略调整，维护端内社交氛围，规避叫嚣导致的负面情绪扩大化</li>
+  </ul>
+</section>
+
+<section class="section" id="feedback">
+  <div class="sec-head"><div class="sec-num">5</div><div><div class="sec-title">玩家高频反馈 · <em>问题分类与优先级</em></div></div></div>
+  <div class="two-col">
+    <div class="chart-box" style="margin-bottom:0">
+      <div class="chart-title">🥧 玩家反馈话题分布</div>
+      <div class="chart-canvas-wrap" style="height:280px;"><canvas id="chartPieTopic"></canvas></div>
+      <div class="chart-caption">安全 54% · 玩法 32% · 版本 13% · 商业化 1%</div>
+    </div>
+    <div class="chart-box" style="margin-bottom:0">
+      <div class="chart-title">🥧 安全话题细分</div>
+      <div class="chart-canvas-wrap" style="height:280px;"><canvas id="chartPieSecurity"></canvas></div>
+      <div class="chart-caption">外挂 49% · 非法组队 19% · 官方公信力 16% · 误封 4% · 其他 11%</div>
+    </div>
+  </div>
+  <div class="chart-box" style="margin-top:20px;padding:20px 16px;">
+    <div class="chart-title">📋 玩家高频反馈详细分析</div>
+    <div class="feedback-table-wrap">
+      <table class="feedback-table">
+        <thead>
+          <tr>
+            <th style="width:60px">优先级</th>
+            <th style="width:150px">核心问题</th>
+            <th style="width:230px">观察的具体内容</th>
+            <th style="width:200px">CBT3举措与效果</th>
+            <th style="width:170px">产品建议</th>
+            <th style="width:170px">OBT规划</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="status-p0">
+            <td><span class="tag-p0">P0</span></td>
+            <td><div class="issue-title">外挂泛滥、举报无效、举报时效性差，开挂成本低</div></td>
+            <td>玩家反映举报多次仍不封禁，外挂在公屏公然出售叫嚣，封禁延迟严重（3-7天），5元即可购买新号继续开挂，玩家呼吁封设备/封机器码</td>
+            <td><ul class="bullet-list"><li>公屏叫嚣性事件排查，提交高频反馈案例进行集中审查</li><li>对移动端作弊设备处理升级</li><li>对违规玩家奖励进行追缴处理</li></ul></td>
+            <td><ul class="bullet-list"><li>匹配机制梯化处分，提高高端局准入门槛</li><li>动态实例Replay观战功能</li><li>强化反外挂宣传，阻断引流外挂平台传播</li></ul></td>
+            <td><ul class="bullet-list"><li>举报正确率提升专属奖励</li><li>动态实例Replay对战报进行引导</li><li>强化反外挂宣传阻断引流</li></ul></td>
+          </tr>
+          <tr class="status-p0">
+            <td><span class="tag-p0">P0</span></td>
+            <td><div class="issue-title">误封频发，严重影响游戏体验</div></td>
+            <td>反外挂系统频繁误封正常玩家，拆家第三方介入被判定非法组队，被举报过多自动封禁，玩家因设备环境问题被连续封禁</td>
+            <td><ul class="bullet-list"><li>完成3.11非法组队2.0封禁策略前后的社区公告沟通</li><li>定点反馈发现设备环境异常原因，进行玩家定点沟通</li></ul></td>
+            <td><ul class="bullet-list"><li>处罚原因弹窗文案优化，细化环境异常文案</li><li>检测算法优化，方便定点玩家教育</li></ul></td>
+            <td><ul class="bullet-list"><li>安全系统升级宣发，OBT前期以安全系统升级为包装进行宣发</li><li>对第一次被封禁的玩家进行教育申诉</li><li>灰色社交生态UGC内容生产</li></ul></td>
+          </tr>
+          <tr class="status-p1">
+            <td><span class="tag-p1">P1</span></td>
+            <td><div class="issue-title">部分玩家质疑标准一致性</div></td>
+            <td>主播（如"包包""抖音牛大王"等）在直播中公然招募非法组队，普通玩家举报无效，形成严重的官方公信危机</td>
+            <td><ul class="bullet-list"><li>后期阶段单独case与主播沟通，保证标准一致性</li><li>对主播进行安全内容的专项沟通教育</li></ul></td>
+            <td>回查官方KOC测试账号行为；搭建可信者库，确保正向案例内容；营造玩家等级规范氛围</td>
+            <td><ul class="bullet-list"><li>回查官方KOC测试账号行为</li><li>搭建可信者库，确保正向案例</li><li>营造玩家等级规范氛围</li></ul></td>
+          </tr>
+          <tr class="status-p1">
+            <td><span class="tag-p1">P1</span></td>
+            <td><div class="issue-title">玩家认为卡BUG应被纳入违规处罚</div></td>
+            <td>部分玩家反映卡BUG导致战局公平性失衡，且出现付费教学，操作简单但破坏了正常战局生态</td>
+            <td>对BUG修复进度公开化，但执行不充分，玩家感知仍停留在"没了会"</td>
+            <td>将游戏战局平衡的BUG修复公开，出现此类型BUG加入工单审查全面的流程，进行梯度处罚</td>
+            <td>定点反馈玩家高频影响体验的BUG进行针对性回复</td>
+          </tr>
+          <tr class="status-p2">
+            <td><span class="tag-p2">P2</span></td>
+            <td><div class="issue-title">遇挂补偿感知弱</div></td>
+            <td>玩家反馈遭遇外挂后的补偿未收到，战损情绪感强，后期赛季节奏难以接受</td>
+            <td>针对性反馈，已进行奖励点数币的发放</td>
+            <td><ul class="bullet-list"><li>评估返回资源方案的可行性</li><li>前期安全系统官宣时规划强玩家利好点</li></ul></td>
+            <td>前期安全系统官宣时按规模规划强玩家利好点，同步公示规划</td>
+          </tr>
+          <tr class="status-p2">
+            <td><span class="tag-p2">P2</span></td>
+            <td><div class="issue-title">玩家交易平台发现黑产内容，认为打击力度不足</div></td>
+            <td>少部分玩家反馈二手平台有黑产贩卖，且市场价格低，玩家感知差</td>
+            <td>已对快手、淘宝成熟程序进行处理，取得举报成效，并已与法务侧进行对齐</td>
+            <td>与法务侧密切沟通，持续下架，数量进行提高</td>
+            <td>与法务侧密切沟通，持续推进下架工作</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="appeal">
+  <div class="sec-head"><div class="sec-num">二</div><div><div class="sec-title">主动口碑维护 · <em>黑产内容下架</em></div></div></div>
+  <div class="appeal-box">
+    <div class="appeal-big"><div class="appeal-num">960</div><div class="appeal-unit">申诉总条数</div></div>
+    <div class="appeal-div"></div>
+    <div class="appeal-detail">CBT3整体期间申诉全网黑产内容 <span class="hl">960条</span><br>覆盖平台：<span class="hl-gold">抖音、快手、B站、闲鱼、淘宝</span><br>申诉成功率：<span class="hl-g">86.6%</span>，目前仍在持续性申诉下架中</div>
+    <div class="appeal-div"></div>
+    <div class="appeal-big"><div class="appeal-num" style="color:var(--green)">86.6%</div><div class="appeal-unit">申诉成功率</div></div>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">📈 申诉量与成功率周趋势（0212–0320）</div>
+    <div class="chart-canvas-wrap" style="height:280px;"><canvas id="chartAppeal"></canvas></div>
+    <div class="chart-caption">蓝柱=申诉量 | 橙线=申诉成功率(%) · 鼠标悬停查看详细数据</div>
+  </div>
+  <div class="info-box">📌 测试期社区处理、OB联合腾讯诉讼团队对全平台无脑辱骂、带节奏、黑产等内容进行下架</div>
+</section>
+<section class="section" id="social">
+  <div class="sec-head"><div class="sec-num">三</div><div><div class="sec-title">社媒沟通内容 · <em>玩家反馈分析</em></div></div></div>
+  <div class="stats-row" style="margin-bottom:20px;">
+    <div class="scard c-blue"><div class="scard-num">13</div><div class="scard-label">终极测试期间安全相关沟通内容</div></div>
+    <div class="scard c-red"><div class="scard-num">60%</div><div class="scard-label">总体玩家评论负面率</div></div>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">🎮 失控安全站正式上线（端内截图）</div>
+    <img src="cbt3_assets/image12.png" alt="失控安全站正式上线端内截图" loading="lazy">
+    <div class="chart-caption">安全站提供举报、查询自身账号状态等一站式服务，大盘渗透率 4.6%</div>
+  </div>
+  <div class="sent-item">
+    <div class="sent-head"><div class="sent-title">📋 3.11 安全重点FAQ玩家反馈</div><div class="sent-date">2026.3.11</div></div>
+    <div class="sent-bars"><div class="bar-p" style="width:20%"></div><div class="bar-n" style="width:30%"></div><div class="bar-neg" style="width:50%"></div></div>
+    <div class="sent-labels"><span><span class="dot" style="background:var(--green)"></span>正面 20%</span><span><span class="dot" style="background:var(--blue)"></span>中性 30%</span><span><span class="dot" style="background:var(--red)"></span>负面 50%</span></div>
+    <div class="sent-note"><strong>主要反馈内容：</strong><br>负面占比主要围绕<span class="hl">非法组队误封检测机制</span>的讨论，占比20%。玩家对"被误封"的申诉路径不清晰，部分玩家认为官方FAQ未解答核心疑问。<br><span class="hl-g">后续已展开专项沟通，目前误封相关声量已稳定在 2% 及以下。</span></div>
+  </div>
+  <div class="sent-item">
+    <div class="sent-head"><div class="sent-title">📋 3.26 非法组队梯度处罚公告玩家反馈</div><div class="sent-date">2026.3.26</div></div>
+    <div class="sent-bars"><div class="bar-p" style="width:10%"></div><div class="bar-n" style="width:30%"></div><div class="bar-neg" style="width:60%"></div></div>
+    <div class="sent-labels"><span><span class="dot" style="background:var(--green)"></span>正面 10%</span><span><span class="dot" style="background:var(--blue)"></span>中性 30%</span><span><span class="dot" style="background:var(--red)"></span>负面 60%</span></div>
+    <div class="sent-note"><strong>主要反馈内容：</strong><br>玩家普遍反馈外挂治理透明化程度低，进一步提出<span class="hl">"大团队组队需求满足"</span>建议。部分玩家认为梯度处罚标准仍不够清晰，希望官方公示更详细的判定逻辑。<br><span class="hl-g">研发侧后续将开展公会赛服、UGC列表服、8人模式服等大团队玩法满足需求。</span></div>
+  </div>
+  <div class="sent-item">
+    <div class="sent-head"><div class="sent-title">📋 3.31 安全总结公告玩家反馈</div><div class="sent-date">2026.3.31</div></div>
+    <div class="sent-bars"><div class="bar-p" style="width:30%"></div><div class="bar-n" style="width:25%"></div><div class="bar-neg" style="width:45%"></div></div>
+    <div class="sent-labels"><span><span class="dot" style="background:var(--green)"></span>正面 30%</span><span><span class="dot" style="background:var(--blue)"></span>中性 25%</span><span><span class="dot" style="background:var(--red)"></span>负面 45%</span></div>
+    <div class="sent-note"><strong>主要反馈内容：</strong><br>玩家对卡BUG等行为导致的处罚判断机制表示不明确，认为目前有较低成本破坏战局公平性的行为，进一步提出对游戏违规行为对抗机制、模式选择的建议。<br><span class="hl-g">整体正面率较前两次公告有明显提升（+20%），说明透明化沟通策略初见成效。</span></div>
+  </div>
+</section>
+
+<section class="section" id="obt">
+  <div class="sec-head"><div class="sec-num">附</div><div><div class="sec-title">OBT 社区安全初步规划 · <em>目标与策略</em></div></div></div>
+  <div class="goal-row">
+    <div class="goal-card"><div class="goal-icon">🎯</div><div class="goal-label">声量占比基础目标</div><div class="goal-val">低于 2%</div></div>
+    <div class="goal-card"><div class="goal-icon">🔥</div><div class="goal-label">活动活跃期目标</div><div class="goal-val">低于 1.5%</div></div>
+    <div class="goal-card"><div class="goal-icon">🌐</div><div class="goal-label">核心建设方向</div><div class="goal-val" style="font-size:16px;">灰色社交<br>生态认知建设</div></div>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">📋 OBT 安全官号内容规划详情（栏目线路 / 主要内容 / 释放节奏）</div>
+    <img src="cbt3_assets/image13.png" alt="OBT安全官号内容规划" loading="lazy">
+  </div>
+  <div class="strat-grid">
+    <div class="strat-card"><span class="strat-icon">🏗️</span><div class="strat-name">灰色社交生态建设</div><ul class="strat-list"><li>以UGC内容引导玩家建立对"大团队玩法""劝架玩法"的认知</li><li>将非法组队转化为特定模式下的社交特征</li><li>在战局中形成"亦敌亦友"、劝架路人等人设的讨论氛围</li><li>让灰色社交成为可被理解与讨论的生态常态</li></ul></div>
+    <div class="strat-card"><span class="strat-icon">📡</span><div class="strat-name">前置主动沟通</div><ul class="strat-list"><li>通过前瞻预告、治理透明化等方式让玩家提前知悉规则</li><li>变"事后补偿"为"事前共建"</li><li>减少补偿成本并持续积累信任</li><li>形成"预警—同步—引导"的沟通闭环</li></ul></div>
+    <div class="strat-card"><span class="strat-icon">🛡️</span><div class="strat-name">主动沟通措施</div><ul class="strat-list"><li>失控安全站更新迭代，强化数据感知、举报进度感知</li><li>失控纠察队上线，对绿色玩家进行表彰</li><li>安全专门推广线路拉通，前置与玩家预沟通</li><li>主动宣传法务打击成果，强化官方信任度</li></ul></div>
+    <div class="strat-card"><span class="strat-icon">✍️</span><div class="strat-name">UGC内容铺设</div><ul class="strat-list"><li>引导获得纠察奖励的优质玩家输出UGC内容</li><li>获得安全打挂方面的正向叙事，对冲疏散负面声量</li><li>灰色社交生态内容搭建，引导社交模式讨论</li></ul></div>
+    <div class="strat-card"><span class="strat-icon">📋</span><div class="strat-name">舆情备案预案</div><ul class="strat-list"><li>预案一：延续CBT3申诉流程，维护社区环境</li><li>预案二：拉起诉讼团队全网负面黑产内容批量申诉下架</li><li>安全巡查：拉起巡查系统玩家层面配合</li><li>直播备案：针对舆情爆发风险点拉起replay回顾类直播备案</li></ul></div>
+  </div>
+</section>
+</div>
+<footer class="footer"><div class="container">《失控进化》CBT3 安全 & 舆情复盘 · 社区运营团队 · 2026.03</div></footer>
+<script>
+Chart.defaults.font.family = "'PingFang SC','Microsoft YaHei',sans-serif";
+Chart.defaults.color = '#5a5f7a';
+const C = { red:'#e63757', blue:'#2563eb', gold:'#d97706', green:'#059669', purple:'#7c3aed', pink:'#db2777', orange:'#ea580c' };
+const tip = { backgroundColor:'rgba(26,29,46,0.95)', titleColor:'#fff', bodyColor:'#c5cae9', borderColor:'#3d4166', borderWidth:1, padding:12, cornerRadius:8, titleFont:{size:13,weight:'bold'}, bodyFont:{size:12} };
+
+// 1. CBT2 vs CBT3
+new Chart(document.getElementById('chartCBT2vsCBT3'), {
+  data:{ labels:['外挂','非法组队','安全整体（合并去重）'],
+    datasets:[
+      {type:'bar',label:'CBT2 声量',data:[19859,5128,24319],backgroundColor:'rgba(219,39,119,0.75)',borderRadius:6,yAxisID:'y1'},
+      {type:'bar',label:'CBT3 声量',data:[22348,8095,27539],backgroundColor:'rgba(37,99,235,0.75)',borderRadius:6,yAxisID:'y1'},
+      {type:'line',label:'CBT2 占比(%)',data:[1.50,0.39,1.84],borderColor:C.pink,pointBackgroundColor:C.pink,pointRadius:6,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'CBT3 占比(%)',data:[2.25,1.02,2.77],borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:6,tension:0.3,yAxisID:'y2'},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top'}, tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.dataset.yAxisID==='y2'?c.parsed.y+'%':c.parsed.y.toLocaleString()}`}} },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},ticks:{callback:v=>v.toLocaleString()},title:{display:true,text:'声量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},title:{display:true,text:'占比(%)'},max:4} } }
+});
+
+// 2. 整体趋势
+new Chart(document.getElementById('chartOverallTrend'), {
+  data:{ labels:['2.3-2.10','2.11-2.17','2.18-2.24','2.25-3.3','3.4-3.10','3.11-3.17','3.18-3.22','3.23-3.30'],
+    datasets:[
+      {type:'bar',label:'安全负面声量',data:[4152,3494,2406,5503,1556,4427,1667,2289],backgroundColor:[0,1,2,3,4,5,6,7].map(i=>[3,5].includes(i)?'rgba(230,55,87,0.8)':'rgba(37,99,235,0.65)'),borderRadius:5,yAxisID:'y1'},
+      {type:'line',label:'声量占比(%)',data:[6.59,1.86,1.13,8.34,4.72,11.96,6.95,7.89],borderColor:C.gold,pointBackgroundColor:C.gold,pointRadius:5,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'口碑分数',data:[73.08,80.15,82.30,72.94,80.05,72.53,75.82,74.82],borderColor:C.purple,pointBackgroundColor:C.purple,pointRadius:5,tension:0.3,yAxisID:'y3',borderDash:[5,3]},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top'}, tooltip:{...tip, callbacks:{label:c=>{ const v=c.parsed.y; if(c.dataset.yAxisID==='y2') return ` ${c.dataset.label}: ${v}%`; if(c.dataset.yAxisID==='y3') return ` ${c.dataset.label}: ${v}分`; return ` ${c.dataset.label}: ${v.toLocaleString()}`; }}} },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},ticks:{callback:v=>v.toLocaleString()},title:{display:true,text:'声量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},title:{display:true,text:'占比(%)'}},
+      y3:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'分'},title:{display:true,text:'口碑'},min:60,max:90,afterFit:s=>{s.width=65;}} } }
+});
+
+// 3. 竞品对比
+new Chart(document.getElementById('chartCompetitor'), {
+  data:{ labels:['倒数W3','倒数W2','倒数W1'],
+    datasets:[
+      {type:'bar',label:'三角洲行动',data:[4014,3038,2619],backgroundColor:'rgba(79,70,229,.75)',borderRadius:5,yAxisID:'y1'},
+      {type:'bar',label:'瓦手终测',data:[3522,2530,2833],backgroundColor:'rgba(8,145,178,.75)',borderRadius:5,yAxisID:'y1'},
+      {type:'bar',label:'失控进化',data:[2960,1898,1994],backgroundColor:'rgba(230,55,87,.75)',borderRadius:5,yAxisID:'y1'},
+      {type:'line',label:'三角洲占比(%)',data:[1.86,2.30,2.70],borderColor:'rgba(79,70,229,1)',pointBackgroundColor:'rgba(79,70,229,1)',pointRadius:5,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'瓦手占比(%)',data:[2.50,1.32,1.10],borderColor:'rgba(8,145,178,1)',pointBackgroundColor:'rgba(8,145,178,1)',pointRadius:5,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'失控占比(%)',data:[8.71,6.12,6.88],borderColor:'rgba(230,55,87,1)',pointBackgroundColor:'rgba(230,55,87,1)',pointRadius:5,tension:0.3,yAxisID:'y2',borderWidth:2.5},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top'}, tooltip:tip },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},ticks:{callback:v=>v.toLocaleString()},title:{display:true,text:'外挂内容量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},title:{display:true,text:'占比(%)'},max:12} } }
+});
+
+// 4. 外挂周趋势
+new Chart(document.getElementById('chartCheatWeekly'), {
+  data:{ labels:['W1','W2','W3','W4','W5','W6','W7','W8'],
+    datasets:[
+      {type:'bar',label:'外挂声量',data:[2796,3166,2171,3925,1685,4592,2253,1760],backgroundColor:[0,1,2,3,4,5,6,7].map(i=>i===5?'rgba(230,55,87,0.85)':'rgba(219,39,119,0.65)'),borderRadius:5,yAxisID:'y1'},
+      {type:'line',label:'外挂占比(%)',data:[1.07,1.55,1.07,2.20,3.40,12.18,6.31,7.09],borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:5,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'整体口碑',data:[74.4,79.0,82.9,73.3,78.6,73.3,75.1,75.2],borderColor:C.gold,pointBackgroundColor:C.gold,pointRadius:4,tension:0.3,yAxisID:'y3',borderDash:[5,3]},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top',labels:{boxWidth:12,font:{size:11}}}, tooltip:tip },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},title:{display:true,text:'声量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},max:16},
+      y3:{display:false,min:60,max:95} } }
+});
+
+// 5. 外挂竞品
+new Chart(document.getElementById('chartCheatCompare'), {
+  data:{ labels:['三角洲行动','无畏契约手游','失控进化'],
+    datasets:[
+      {type:'bar',label:'外挂声量',data:[178423,107798,22348],backgroundColor:['rgba(79,70,229,.75)','rgba(8,145,178,.75)','rgba(230,55,87,.75)'],borderRadius:6,yAxisID:'y1'},
+      {type:'line',label:'外挂占比(%)',data:[3.40,2.00,2.25],borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:7,tension:0.3,yAxisID:'y2'},
+      {type:'line',label:'外挂口碑',data:[75.3,76.3,62.8],borderColor:C.purple,pointBackgroundColor:C.purple,pointRadius:7,tension:0.3,yAxisID:'y3',borderDash:[5,3]},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top',labels:{boxWidth:12,font:{size:11}}}, tooltip:tip },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},ticks:{callback:v=>(v/10000).toFixed(0)+'万'},title:{display:true,text:'声量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},max:6},
+      y3:{display:false,min:50,max:95} } }
+});
+
+// 6. 非法组队
+new Chart(document.getElementById('chartTeamWeekly'), {
+  data:{ labels:['W1','W2','W3','W4','W5','W6','W7','W8'],
+    datasets:[
+      {type:'bar',label:'非法组队声量',data:[663,1616,443,1658,1022,2937,660,1096],backgroundColor:[0,1,2,3,4,5,6,7].map(i=>i===5?'rgba(230,55,87,0.85)':'rgba(234,88,12,0.65)'),borderRadius:5,yAxisID:'y1'},
+      {type:'line',label:'声量占比(%)',data:[0.25,0.79,0.22,0.93,2.08,7.79,1.85,4.42],borderColor:C.blue,pointBackgroundColor:C.blue,pointRadius:5,tension:0.3,yAxisID:'y2'},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top'}, tooltip:{...tip, callbacks:{label:c=>` ${c.dataset.label}: ${c.dataset.yAxisID==='y2'?c.parsed.y+'%':c.parsed.y.toLocaleString()}`, afterBody:c=>c[0]?.dataIndex===5?['','⚠️ W6 峰值：非法组队2.0策略引发误封讨论']:[]}} },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},title:{display:true,text:'声量'}},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},max:12} } }
+});
+
+// 7. 话题饼图
+new Chart(document.getElementById('chartPieTopic'), {
+  type:'doughnut',
+  data:{ labels:['安全','玩法','版本','商业化'],
+    datasets:[{data:[54,32,13,1],backgroundColor:['rgba(230,55,87,.85)','rgba(37,99,235,.85)','rgba(5,150,105,.85)','rgba(217,119,6,.85)'],borderWidth:3,borderColor:'#fff',hoverOffset:8}]},
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom',labels:{padding:16,font:{size:12}}}, tooltip:{...tip,callbacks:{label:c=>` ${c.label}: ${c.parsed}%`}} }, cutout:'55%' }
+});
+
+// 8. 安全细分
+new Chart(document.getElementById('chartPieSecurity'), {
+  type:'doughnut',
+  data:{ labels:['安全-外挂','安全-非法组队','安全-官方公信力','安全-误封','安全-其他'],
+    datasets:[{data:[49,19,16,4,11],backgroundColor:['rgba(37,99,235,.85)','rgba(234,88,12,.85)','rgba(149,157,165,.85)','rgba(217,119,6,.85)','rgba(124,58,237,.85)'],borderWidth:3,borderColor:'#fff',hoverOffset:8}]},
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom',labels:{padding:12,font:{size:11}}}, tooltip:{...tip,callbacks:{label:c=>` ${c.label}: ${c.parsed}%`}} }, cutout:'55%' }
+});
+
+// 9. 申诉趋势
+new Chart(document.getElementById('chartAppeal'), {
+  data:{ labels:['0212-0222','0223-0228','0301-0306','0307-0313','0314-0320'],
+    datasets:[
+      {type:'bar',label:'申诉量（条）',data:[347,363,203,150,244],backgroundColor:'rgba(37,99,235,.75)',borderRadius:6,yAxisID:'y1'},
+      {type:'line',label:'申诉成功率(%)',data:[68.6,81.0,75.8,74.7,80.0],borderColor:C.gold,backgroundColor:'rgba(217,119,6,.1)',pointBackgroundColor:C.gold,pointRadius:6,tension:0.3,yAxisID:'y2'},
+    ]},
+  options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    plugins:{ legend:{position:'top'}, tooltip:{...tip,callbacks:{label:c=>` ${c.dataset.label}: ${c.dataset.yAxisID==='y2'?c.parsed.y+'%':c.parsed.y+'条'}`}} },
+    scales:{ y1:{position:'left',grid:{color:'#eef0f7'},title:{display:true,text:'申诉量（条）'},max:450},
+      y2:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'},title:{display:true,text:'成功率(%)'},min:55,max:95} } }
+});
+
+// 导航高亮
+const navAs=document.querySelectorAll('.nav-a'), sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{ let cur=''; sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id;}); navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur)); });
+navAs.forEach(a=>{ a.addEventListener('click',e=>{ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t)t.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+
+// 数字滚动
+const animateNums=()=>{ document.querySelectorAll('.scard-num,.appeal-num,.chat-pct').forEach(el=>{ const raw=el.textContent.trim(), num=parseFloat(raw.replace(/[^0-9.]/g,'')), suf=raw.replace(/[0-9.]/g,''); if(isNaN(num)||num<=0)return; let start=0; const step=ts=>{ if(!start)start=ts; const p=Math.min((ts-start)/1000,1),e=1-Math.pow(1-p,3); el.textContent=(num*e).toFixed(num%1?1:0)+suf; if(p<1)requestAnimationFrame(step); }; requestAnimationFrame(step); }); };
+new IntersectionObserver(entries=>{ if(entries[0].isIntersecting)animateNums(); },{threshold:0.1}).observe(document.querySelector('.stats-row'));
+</script>
+</body>
+</html>
