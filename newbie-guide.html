@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0055)https://yazou-preview.pages.woa.com/prototype-v3-2.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>失控进化·新手站 v3 改版</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./失控进化·新手站 v3 改版_files/css2" rel="stylesheet">
 <style>
 :root {
   --bg: #0a0c0f;
@@ -828,44 +828,132 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 .crossplay-divider{font-size:22px;color:var(--orange);font-weight:900;}
 
 /* ════════ 核心术语词条区块 ════════ */
-.terms-section{max-width:1100px;margin:0 auto;padding:40px 48px 48px;}
-.terms-hd{margin-bottom:24px;}
-.terms-title-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.terms-title-icon{font-size:20px;}
-.terms-title{font-size:22px;font-weight:900;}
-.terms-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);background:var(--orange-dim);border:1px solid var(--orange-glow);padding:3px 8px;border-radius:4px;letter-spacing:1px;}
-.terms-subtitle{font-size:13px;color:var(--text-dim);}
-.terms-cat-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
-.terms-cat-tab{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
-.terms-cat-tab:hover{border-color:var(--border-bright);color:var(--text);}
-.terms-cat-tab.active{background:var(--orange-dim);border-color:var(--orange);color:var(--orange);}
-.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.term-chip{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;transition:all .18s;font-size:12px;font-weight:600;color:var(--text-dim);position:relative;display:flex;align-items:center;gap:8px;}
-.term-chip:hover{border-color:var(--orange);color:var(--text);transform:translateY(-1px);box-shadow:0 4px 12px rgba(232,98,26,.15);}
-.term-chip-ico{font-size:16px;flex-shrink:0;line-height:1;}
-.term-chip-name{flex:1;line-height:1.3;}
-.term-chip-arrow{color:var(--text-muted);font-size:10px;opacity:0;transition:opacity .15s;flex-shrink:0;}
-.term-chip:hover .term-chip-arrow{opacity:1;}
 
-/* 侧边抽屉 */
-.term-drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:none;opacity:0;transition:opacity .25s;}
-.term-drawer-overlay.open{display:block;opacity:1;}
-.term-drawer{position:fixed;right:-420px;top:0;bottom:0;width:400px;background:var(--surface);border-left:1px solid var(--border);z-index:1101;transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column;}
-.term-drawer.open{right:0;}
-.term-drawer-hd{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 0;flex-shrink:0;}
-.term-drawer-cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);background:var(--orange-dim);padding:3px 10px;border-radius:4px;}
-.term-drawer-close{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.term-drawer-close:hover{border-color:var(--orange);color:var(--orange);}
-.term-drawer-name{font-size:24px;font-weight:900;padding:16px 24px 0;line-height:1.3;}
-.term-drawer-divider{height:1px;background:var(--border);margin:16px 24px;}
-.term-drawer-body{padding:0 24px;font-size:14px;color:var(--text-dim);line-height:1.8;flex:1;}
-.term-drawer-related{padding:20px 24px 0;}
-.term-drawer-related-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
-.term-drawer-footer{padding:20px 24px 32px;border-top:1px solid var(--border);margin-top:20px;flex-shrink:0;}
-.term-nav-btns{display:flex;justify-content:space-between;gap:10px;}
-.term-nav-btn{flex:1;padding:9px 16px;border-radius:var(--r);border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:12px;cursor:pointer;transition:all .15s;text-align:center;}
-.term-nav-btn:hover{border-color:var(--orange);color:var(--orange);}
-.term-nav-btn.primary{background:var(--orange);border-color:var(--orange);color:#fff;}
+/* ── 首页：术语轻入口条 ── */
+.terms-entry-bar{max-width:1100px;margin:0 auto 0;padding:0 48px;display:flex;align-items:center;gap:12px;cursor:pointer;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(232,98,26,.04);transition:background .2s;}
+.terms-entry-bar:hover{background:rgba(232,98,26,.09);}
+.terms-entry-icon{font-size:18px;flex-shrink:0;padding:14px 0;}
+.terms-entry-text{flex:1;font-size:13px;color:var(--text-dim);}
+.terms-entry-text strong{color:var(--orange);}
+.terms-entry-arrow{color:var(--orange);font-size:15px;font-weight:700;flex-shrink:0;transition:transform .18s;}
+.terms-entry-bar:hover .terms-entry-arrow{transform:translateX(4px);}
+
+/* ── 首页工具卡：每行独立跳转 ── */
+.feat-row-link{cursor:pointer;border-radius:6px;padding:9px 12px;border:1px solid var(--border);background:var(--surface2);transition:all .18s;justify-content:space-between;margin-bottom:0;}
+.feat-row-link:hover{background:rgba(240,180,41,.08);border-color:rgba(240,180,41,.4);transform:translateX(2px);}
+.feat-text{flex:1;color:var(--text-dim);}
+.feat-text strong{color:var(--text);}
+.feat-goto{font-size:11px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--yellow);white-space:nowrap;flex-shrink:0;background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.25);padding:2px 8px;border-radius:4px;transition:all .18s;}
+.feat-row-link:hover .feat-goto{background:rgba(240,180,41,.2);border-color:rgba(240,180,41,.5);}
+
+/* ── 首页：FAQ 导航横条 ── */
+.faq-nav-bar{max-width:1100px;margin:0 auto 48px;padding:0 48px;cursor:pointer;}
+.faq-nav-inner{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 22px;transition:all .22s;}
+.faq-nav-bar:hover .faq-nav-inner{border-color:rgba(96,165,250,.4);background:rgba(96,165,250,.04);}
+.faq-nav-icon{font-size:28px;flex-shrink:0;}
+.faq-nav-text{flex:1;display:flex;flex-direction:column;gap:3px;}
+.faq-nav-title{font-size:15px;font-weight:700;color:var(--text);}
+.faq-nav-sub{font-size:12px;color:var(--text-dim);}
+.faq-nav-cta{font-size:13px;font-weight:700;color:#60a5fa;font-family:'JetBrains Mono',monospace;white-space:nowrap;flex-shrink:0;transition:transform .18s;}
+.faq-nav-bar:hover .faq-nav-cta{transform:translateX(4px);}
+
+/* ── 游戏术语独立页适配 ── */
+.terms-page-section{padding-top:24px;}
+/* ════════ 游戏术语页 ════════ */
+/* Hero */
+.terms-hero{position:relative;overflow:hidden;padding:56px 48px 40px;max-width:1100px;margin:0 auto;}
+.terms-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 90% 50%,rgba(200,146,42,.07) 0%,transparent 65%);pointer-events:none;}
+.terms-hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.terms-hero-title{font-size:34px;font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px;}
+.terms-hero-title em{color:var(--orange);font-style:normal;}
+.terms-hero-sub{font-size:13px;color:var(--text-dim);line-height:1.7;max-width:480px;margin-bottom:20px;}
+.terms-hero-guide{display:flex;align-items:center;gap:10px;padding:12px 18px;background:rgba(232,98,26,.07);border:1px solid rgba(232,98,26,.2);border-radius:10px;max-width:460px;}
+.terms-hero-guide-ico{font-size:20px;flex-shrink:0;}
+.terms-hero-guide-text{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.terms-hero-guide-text strong{color:var(--orange);font-weight:700;}
+
+/* ── 分类大卡片（第一屏）── */
+.terms-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1100px;margin:0 auto;padding:0 48px 60px;}
+.terms-cat-card{background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:0;cursor:pointer;transition:all .24s;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:200px;}
+.terms-cat-card:hover{border-color:rgba(232,98,26,.55);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+/* 插图占位区 */
+.terms-cat-illus{height:110px;position:relative;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.terms-cat-illus-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;}
+.terms-cat-illus-label{font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.2);background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.1);padding:4px 10px;border-radius:4px;}
+.terms-cat-illus-emoji{font-size:48px;opacity:.25;position:absolute;bottom:-4px;right:16px;line-height:1;}
+.terms-cat-illus-svg{position:absolute;inset:0;opacity:.12;}
+/* 卡片内容区 */
+.terms-cat-body{padding:16px 20px 18px;flex:1;display:flex;flex-direction:column;border-top:1px solid var(--border);}
+.terms-cat-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.terms-cat-card-icon{font-size:22px;line-height:1;}
+.terms-cat-card-name{font-size:17px;font-weight:900;color:var(--text);flex:1;}
+.terms-cat-card-arr{font-size:14px;color:var(--orange);opacity:.4;transition:all .2s;}
+.terms-cat-card:hover .terms-cat-card-arr{opacity:1;transform:translateX(3px);}
+.terms-cat-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.terms-cat-tag{font-size:11px;color:var(--text-muted);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;padding:2px 7px;line-height:1.5;}
+.terms-cat-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+.terms-cat-card-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);}
+.terms-cat-card-cta{font-size:12px;color:var(--orange);font-weight:600;display:inline-flex;align-items:center;gap:5px;background:rgba(232,98,26,.1);border:1px solid rgba(232,98,26,.28);border-radius:6px;padding:4px 11px;transition:all .18s;}
+.terms-cat-card:hover .terms-cat-card-cta{background:rgba(232,98,26,.22);border-color:var(--orange);}
+
+/* 各分类配色 */
+.terms-cat-card[data-cat="survive"] .terms-cat-illus{background:linear-gradient(135deg,#1a0a0a 0%,#2a1010 100%);}
+.terms-cat-card[data-cat="survive"] .terms-cat-card-cta{color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.1);}
+.terms-cat-card[data-cat="survive"]:hover .terms-cat-card-cta{border-color:#f87171;background:rgba(248,113,113,.2);}
+.terms-cat-card[data-cat="survive"] .terms-cat-card-arr{color:#f87171;}
+.terms-cat-card[data-cat="build"] .terms-cat-illus{background:linear-gradient(135deg,#0d1a0d 0%,#152a15 100%);}
+.terms-cat-card[data-cat="build"] .terms-cat-card-cta{color:#86efac;border-color:rgba(134,239,172,.3);background:rgba(134,239,172,.08);}
+.terms-cat-card[data-cat="build"]:hover .terms-cat-card-cta{border-color:#86efac;background:rgba(134,239,172,.18);}
+.terms-cat-card[data-cat="build"] .terms-cat-card-arr{color:#86efac;}
+.terms-cat-card[data-cat="resource"] .terms-cat-illus{background:linear-gradient(135deg,#1a1200 0%,#2a1e00 100%);}
+.terms-cat-card[data-cat="combat"] .terms-cat-illus{background:linear-gradient(135deg,#160010 0%,#240020 100%);}
+.terms-cat-card[data-cat="combat"] .terms-cat-card-cta{color:#c084fc;border-color:rgba(192,132,252,.3);background:rgba(192,132,252,.08);}
+.terms-cat-card[data-cat="combat"]:hover .terms-cat-card-cta{border-color:#c084fc;background:rgba(192,132,252,.18);}
+.terms-cat-card[data-cat="combat"] .terms-cat-card-arr{color:#c084fc;}
+.terms-cat-card[data-cat="explore"] .terms-cat-illus{background:linear-gradient(135deg,#00101a 0%,#001a2a 100%);}
+.terms-cat-card[data-cat="explore"] .terms-cat-card-cta{color:#67e8f9;border-color:rgba(103,232,249,.3);background:rgba(103,232,249,.08);}
+.terms-cat-card[data-cat="explore"]:hover .terms-cat-card-cta{border-color:#67e8f9;background:rgba(103,232,249,.18);}
+.terms-cat-card[data-cat="explore"] .terms-cat-card-arr{color:#67e8f9;}
+.terms-cat-card[data-cat="mode"] .terms-cat-illus{background:linear-gradient(135deg,#0a0a1a 0%,#10102a 100%);}
+.terms-cat-card[data-cat="mode"] .terms-cat-card-cta{color:#a5b4fc;border-color:rgba(165,180,252,.3);background:rgba(165,180,252,.08);}
+.terms-cat-card[data-cat="mode"]:hover .terms-cat-card-cta{border-color:#a5b4fc;background:rgba(165,180,252,.18);}
+.terms-cat-card[data-cat="mode"] .terms-cat-card-arr{color:#a5b4fc;}
+
+/* ── 二级：词条小方卡网格 ── */
+.terms-detail-view{max-width:1100px;margin:0 auto;padding:0 48px 60px;display:none;}
+.terms-detail-view.visible{display:block;}
+.terms-back-bar{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.terms-back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:13px;color:var(--text-dim);cursor:pointer;transition:all .15s;}
+.terms-back-btn:hover{border-color:var(--orange);color:var(--orange);}
+.terms-detail-hd{display:flex;align-items:center;gap:12px;}
+.terms-detail-icon{font-size:28px;}
+.terms-detail-name{font-size:20px;font-weight:900;}
+.terms-detail-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:4px;}
+/* 词条小方卡网格 */
+.terms-tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px;}
+.term-tile{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px 16px 16px;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;position:relative;}
+.term-tile:hover{border-color:var(--cat-color,var(--orange));transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3);}
+.term-tile.selected{border-color:var(--cat-color,var(--orange));background:rgba(var(--cat-rgb,232,98,26),.07);box-shadow:0 0 0 1px var(--cat-color,var(--orange));}
+.term-tile-ico{font-size:32px;line-height:1;}
+.term-tile-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3;}
+.term-tile-hint{font-size:10px;color:var(--text-muted);margin-top:2px;}
+/* 词条详情展开区 */
+.terms-detail-panel{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px 32px;margin-top:4px;animation:panel-in .2s ease;}
+@keyframes panel-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.terms-detail-panel-hd{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.terms-detail-panel-ico{font-size:28px;}
+.terms-detail-panel-name{font-size:20px;font-weight:900;flex:1;}
+.terms-detail-panel-close{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s;}
+.terms-detail-panel-close:hover{border-color:var(--orange);color:var(--orange);}
+.terms-detail-panel-divider{height:1px;background:linear-gradient(90deg,var(--cat-color,var(--orange)),transparent);opacity:.4;margin-bottom:16px;}
+.terms-detail-panel-desc{font-size:14px;color:var(--text-dim);line-height:1.9;}
+.terms-detail-panel-nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+.terms-panel-nav-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-dim);padding:7px 14px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .15s;}
+.terms-panel-nav-btn:hover{border-color:var(--orange);color:var(--orange);}
+.terms-panel-nav-btn.next{background:rgba(var(--cat-rgb,200,146,42),.12);border-color:var(--cat-color,var(--orange));color:var(--cat-color,var(--yellow));}
+
+/* ── 游戏术语独立页适配 ── */
+.terms-page-section{padding-top:0;}
 .term-nav-btn.primary:hover{background:#f07030;}
 
 /* ════════ 搜索栏（武器/据点通用） ════════ */
@@ -1000,22 +1088,23 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo" onclick="switchPage('home')">
-    <span class="nav-logo-icon"><img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/icon_logo.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" style="height:20px;vertical-align:middle;margin-right:2px"><span style="display:none">🏝</span></span> 失控进化·新手站
+  <div class="nav-logo" onclick="switchPage(&#39;home&#39;)">
+    <span class="nav-logo-icon"><img src="./失控进化·新手站 v3 改版_files/icon_logo.png" onerror="this.style.display=&#39;none&#39;;this.nextSibling.style.display=&#39;inline&#39;" style="height: 20px; vertical-align: middle; margin-right: 2px; display: none;"><span style="display: inline;">🏝</span></span> 失控进化·新手站
   </div>
   <div class="nav-tabs">
-    <div class="nav-tab active" data-page="home" onclick="switchPage('home',this)"><span>🏕️</span> 新手站</div>
-    <div class="nav-tab" data-page="guide" onclick="switchPage('guide',this)"><span>📋</span> 新手入门 <span class="nav-badge">6 STEPS</span></div>
-    <div class="nav-tab" data-page="weapons" onclick="switchPage('weapons',this)"><span>🪖</span> 武器图鉴</div>
-    <div class="nav-tab" data-page="poi" onclick="switchPage('poi',this)"><span>🏝️</span> 据点指南</div>
-    <div class="nav-tab" data-page="videos" onclick="switchPage('videos',this)"><span>▶️</span> 攻略视频</div>
-    <div class="nav-tab" data-page="faq" onclick="switchPage('faq',this)"><span>❓</span> FAQ</div>
+    <div class="nav-tab active" data-page="home" onclick="switchPage(&#39;home&#39;,this)"><span>🏕️</span> 新手站</div>
+    <div class="nav-tab" data-page="guide" onclick="switchPage(&#39;guide&#39;,this)"><span>📋</span> 新手入门 <span class="nav-badge">6 STEPS</span></div>
+    <div class="nav-tab" data-page="weapons" onclick="switchPage(&#39;weapons&#39;,this)"><span>🪖</span> 武器图鉴</div>
+    <div class="nav-tab" data-page="poi" onclick="switchPage(&#39;poi&#39;,this)"><span>🏝️</span> 据点指南</div>
+    <div class="nav-tab" data-page="videos" onclick="switchPage(&#39;videos&#39;,this)"><span>▶️</span> 攻略视频</div>
+    <div class="nav-tab" data-page="terms" onclick="switchPage(&#39;terms&#39;,this)"><span>📖</span> 游戏术语</div>
+    <div class="nav-tab" data-page="faq" onclick="switchPage(&#39;faq&#39;,this)"><span>❓</span> FAQ</div>
   </div>
-  <a class="nav-official-btn" href="https://rm.qq.com" target="_blank" title="返回官网">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  <a class="nav-official-btn" href="https://rm.qq.com/" target="_blank" title="返回官网">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
     返回官网
   </a>
-</div>
+
 </nav>
 
 <!-- ══════════════════════════════════════
@@ -1034,40 +1123,9 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   </div>
 
 
-  <!-- ✦ 新手必读词典（核心术语） ✦ -->
-  <div class="terms-section">
-    <div class="terms-hd">
-      <div class="terms-title-row">
-        <span class="terms-title-icon">📖</span>
-        <h2 class="terms-title">新手必读词典</h2>
-        <span class="terms-badge">不懂术语？点这里查</span>
-      </div>
-      <div class="terms-subtitle">失控进化核心机制速查——点击任意词条，30秒理解一个关键概念</div>
-    </div>
-    <div class="terms-cat-tabs" id="terms-cat-tabs"></div>
-    <div class="terms-grid" id="terms-grid"></div>
-  </div>
-
-  <!-- 术语侧边抽屉 -->
-  <div class="term-drawer-overlay" id="termDrawerOverlay" onclick="closeTermDrawer()"></div>
-  <div class="term-drawer" id="termDrawer">
-    <div class="term-drawer-hd">
-      <div class="term-drawer-cat" id="termDrawerCat"></div>
-      <button class="term-drawer-close" onclick="closeTermDrawer()">✕</button>
-    </div>
-    <div class="term-drawer-name" id="termDrawerName"></div>
-    <div class="term-drawer-divider"></div>
-    <div class="term-drawer-body" id="termDrawerBody"></div>
-    <div class="term-drawer-related" id="termDrawerRelated"></div>
-    <div class="term-drawer-footer">
-      <div class="term-nav-btns" id="termNavBtns"></div>
-    </div>
-  </div>
-
-
   <div class="split-section">
     <!-- 新玩家 -->
-    <div class="split-card new-player" onclick="switchPage('guide')">
+    <div class="split-card new-player" onclick="switchPage(&#39;guide&#39;)">
       <div class="card-illus">
         <div class="illus-glow-new"></div>
         <div class="illus-placeholder">
@@ -1097,12 +1155,12 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <span class="np-phase-dot"></span>生存
             </div>
             <div class="np-steps">
-              <div class="np-step" data-step="1" onclick="switchPage('guide');switchStep(1)">
+              <div class="np-step" data-step="1" onclick="switchPage(&#39;guide&#39;);switchStep(1)">
                 <div class="np-step-num">01</div>
                 <div class="np-step-text">从一块石头开始<br><span>活过第一天</span></div>
                 <div class="np-step-arrow">›</div>
               </div>
-              <div class="np-step" data-step="2" onclick="switchPage('guide');switchStep(2)">
+              <div class="np-step" data-step="2" onclick="switchPage(&#39;guide&#39;);switchStep(2)">
                 <div class="np-step-num">02</div>
                 <div class="np-step-text">饿了、渴了、冷了<br><span>怎么撑下去</span></div>
                 <div class="np-step-arrow">›</div>
@@ -1115,12 +1173,12 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <span class="np-phase-dot"></span>发育
             </div>
             <div class="np-steps">
-              <div class="np-step" data-step="3" onclick="switchPage('guide');switchStep(3)">
+              <div class="np-step" data-step="3" onclick="switchPage(&#39;guide&#39;);switchStep(3)">
                 <div class="np-step-num">03</div>
                 <div class="np-step-text">重要物资<br><span>缺一样都寸步难行</span></div>
                 <div class="np-step-arrow">›</div>
               </div>
-              <div class="np-step" data-step="4" onclick="switchPage('guide');switchStep(4)">
+              <div class="np-step" data-step="4" onclick="switchPage(&#39;guide&#39;);switchStep(4)">
                 <div class="np-step-num">04</div>
                 <div class="np-step-text">建一个<br><span>拆不垮的家</span></div>
                 <div class="np-step-arrow">›</div>
@@ -1133,12 +1191,12 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <span class="np-phase-dot"></span>战斗
             </div>
             <div class="np-steps">
-              <div class="np-step" data-step="5" onclick="switchPage('guide');switchStep(5)">
+              <div class="np-step" data-step="5" onclick="switchPage(&#39;guide&#39;);switchStep(5)">
                 <div class="np-step-num">05</div>
                 <div class="np-step-text">三种遭遇<br><span>三种应对，别慌</span></div>
                 <div class="np-step-arrow">›</div>
               </div>
-              <div class="np-step" data-step="6" onclick="switchPage('guide');switchStep(6)">
+              <div class="np-step" data-step="6" onclick="switchPage(&#39;guide&#39;);switchStep(6)">
                 <div class="np-step-num">06</div>
                 <div class="np-step-text">废料换科技<br><span>情报换实力</span></div>
                 <div class="np-step-arrow">›</div>
@@ -1151,7 +1209,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     </div>
 
     <!-- 老玩家 -->
-    <div class="split-card veteran" onclick="switchPage('weapons')">
+    <div class="split-card veteran">
       <div class="card-illus">
         <div class="illus-glow-vet"></div>
         <div class="illus-placeholder">
@@ -1165,13 +1223,41 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <h2>快速查阅工具</h2>
         <p>武器合成成本、据点攻略、进阶技巧——直接跳到你要找的内容。</p>
         <div class="card-features">
-          <div class="feat-row"><span class="feat-icon">🪖</span>武器图鉴：合成路径 + 工作台需求</div>
-          <div class="feat-row"><span class="feat-icon">📍</span>据点指南：等级分类 + 推荐时机</div>
-          <div class="feat-row"><span class="feat-icon">🎬</span>攻略视频：官方 + 玩家实战</div>
-          <div class="feat-row"><span class="feat-icon">❓</span>FAQ：常见问题 + 机制解答</div>
+          <div class="feat-row feat-row-link" onclick="switchPage(&#39;weapons&#39;)">
+            <span class="feat-icon">🪖</span>
+            <span class="feat-text"><strong>武器图鉴</strong>：合成路径 + 工作台需求</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage(&#39;poi&#39;)">
+            <span class="feat-icon">📍</span>
+            <span class="feat-text"><strong>据点指南</strong>：等级分类 + 推荐时机</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage(&#39;videos&#39;)">
+            <span class="feat-icon">🎬</span>
+            <span class="feat-text"><strong>攻略视频</strong>：官方 + 玩家实战</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
+          <div class="feat-row feat-row-link" onclick="switchPage(&#39;terms&#39;)">
+            <span class="feat-icon">📖</span>
+            <span class="feat-text"><strong>游戏术语</strong>：核心词条 + 机制速查</span>
+            <span class="feat-goto">前往 →</span>
+          </div>
         </div>
-        <button class="card-cta">进入工具区 →</button>
+        <button class="card-cta" onclick="switchPage(&#39;weapons&#39;)">浏览全部工具 →</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ✦ FAQ 导航横条 ✦ -->
+  <div class="faq-nav-bar" onclick="switchPage(&#39;faq&#39;)">
+    <div class="faq-nav-inner">
+      <span class="faq-nav-icon">❓</span>
+      <div class="faq-nav-text">
+        <span class="faq-nav-title">常见问题解答</span>
+        <span class="faq-nav-sub">游戏机制不懂？掉线了？账号问题？——在 FAQ 里找答案</span>
+      </div>
+      <span class="faq-nav-cta">查看 FAQ →</span>
     </div>
   </div>
 
@@ -1196,7 +1282,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="gi-hero" id="gi-sec-hero">
       <div class="gi-hero-bg"></div>
       <div class="gi-hero-content">
-        <div class="gi-tagline">Rust 正版玩法授权 · PC&移动跨端</div>
+        <div class="gi-tagline">Rust 正版玩法授权 · PC&amp;移动跨端</div>
         <div class="gi-title">失控进化</div>
         <p class="gi-desc">《失控进化》是一款Rust正版玩法授权的高自由度生存对抗游戏，支持PC和移动跨端游戏体验。您将赤手空拳开启一段开放世界荒岛求生的历程，通过采集资源、建造领地、制作工具武器、狩猎、探索，同时抵御饥饿、气候、野生动物以及其他玩家的威胁。您可以选择独自冒险，也可以与其他玩家协作或对抗，在这片危机四伏的世界中展开生存资源争夺战，这里每一刻都充满了未知的风险与机遇。</p>
       </div>
@@ -1259,7 +1345,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">游戏的核心玩法围绕生存展开</div>
         </div>
       </div>
-      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_0-C-ftwBDx.png" alt="生存场景" class="gi-real-img">
+      <img src="./失控进化·新手站 v3 改版_files/explore_img_0-C-ftwBDx.png" alt="生存场景" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🍖 饥饿与口渴</div>
@@ -1289,7 +1375,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">资源是一切生存与发展的基础</div>
         </div>
       </div>
-      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_1-BxaIxARc.png" alt="资源采集" class="gi-real-img">
+      <img src="./失控进化·新手站 v3 改版_files/explore_img_1-BxaIxARc.png" alt="资源采集" class="gi-real-img">
       <div class="gi-resource-cols">
         <div class="gi-res-group">
           <div class="gi-res-group-title">基础资源</div>
@@ -1321,7 +1407,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">保护资源和生存的关键</div>
         </div>
       </div>
-      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_2-UY53GMnj.png" alt="领地建造" class="gi-real-img">
+      <img src="./失控进化·新手站 v3 改版_files/explore_img_2-UY53GMnj.png" alt="领地建造" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">📍 选址与设计</div>
@@ -1382,7 +1468,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">散布全图的遗迹与危险区域</div>
         </div>
       </div>
-      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_3-C1DQ4pjP.png" alt="遗迹探索" class="gi-real-img">
+      <img src="./失控进化·新手站 v3 改版_files/explore_img_3-C1DQ4pjP.png" alt="遗迹探索" class="gi-real-img">
       <div class="gi-detail-grid gi-detail-grid-3">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🟢 小型遗迹</div>
@@ -1420,7 +1506,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gi-section-sub">获取资源或保护自己的基地</div>
         </div>
       </div>
-      <img src="https://game.gtimg.cn/images/rm/cp/a20250311000017index/assets/explore_img_4-B80nESyx.png" alt="战斗掠夺" class="gi-real-img">
+      <img src="./失控进化·新手站 v3 改版_files/explore_img_4-B80nESyx.png" alt="战斗掠夺" class="gi-real-img">
       <div class="gi-detail-grid">
         <div class="gi-detail-card">
           <div class="gi-detail-title">🗡️ 近战 / 远程 / 陷阱</div>
@@ -1571,8 +1657,8 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
       </div>
       <!-- Tab切换 PC/手机 -->
       <div class="gi-spec-tabs">
-        <div class="gi-spec-tab active" onclick="switchSpecTab('pc',this)">💻 PC 端</div>
-        <div class="gi-spec-tab" onclick="switchSpecTab('mobile',this)">📱 移动端</div>
+        <div class="gi-spec-tab active" onclick="switchSpecTab(&#39;pc&#39;,this)">💻 PC 端</div>
+        <div class="gi-spec-tab" onclick="switchSpecTab(&#39;mobile&#39;,this)">📱 移动端</div>
       </div>
 
       <!-- PC 配置表 -->
@@ -1649,18 +1735,18 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- 右侧吸顶导航 -->
     <nav class="gi-sidenav" id="gi-sidenav">
       <div class="gi-sidenav-title">页面导航</div>
-      <a class="gi-sidenav-item active" href="#gi-sec-hero" onclick="giNavClick(this,'gi-sec-hero')"><span class="gi-sidenav-icon">🧭</span>游戏介绍</a>
-      <a class="gi-sidenav-item" href="#gi-sec-overview" onclick="giNavClick(this,'gi-sec-overview')"><span class="gi-sidenav-icon">🏝️</span>玩法概述</a>
-      <a class="gi-sidenav-item" href="#gi-sec-survive" onclick="giNavClick(this,'gi-sec-survive')"><span class="gi-sidenav-icon">💓</span>生存机制</a>
-      <a class="gi-sidenav-item" href="#gi-sec-resource" onclick="giNavClick(this,'gi-sec-resource')"><span class="gi-sidenav-icon">⚒️</span>资源采集</a>
-      <a class="gi-sidenav-item" href="#gi-sec-build" onclick="giNavClick(this,'gi-sec-build')"><span class="gi-sidenav-icon">🏗️</span>领地建造</a>
-      <a class="gi-sidenav-item" href="#gi-sec-craft" onclick="giNavClick(this,'gi-sec-craft')"><span class="gi-sidenav-icon">⚗️</span>制作装备</a>
-      <a class="gi-sidenav-item" href="#gi-sec-explore" onclick="giNavClick(this,'gi-sec-explore')"><span class="gi-sidenav-icon">🏝️</span>探索地标</a>
-      <a class="gi-sidenav-item" href="#gi-sec-combat" onclick="giNavClick(this,'gi-sec-combat')"><span class="gi-sidenav-icon">⚔️</span>战斗掠夺</a>
-      <a class="gi-sidenav-item" href="#gi-sec-social" onclick="giNavClick(this,'gi-sec-social')"><span class="gi-sidenav-icon">🤝</span>社交合作</a>
-      <a class="gi-sidenav-item" href="#gi-sec-event" onclick="giNavClick(this,'gi-sec-event')"><span class="gi-sidenav-icon">🌍</span>动态事件</a>
-      <a class="gi-sidenav-item" href="#gi-sec-mode" onclick="giNavClick(this,'gi-sec-mode')"><span class="gi-sidenav-icon">🎮</span>玩法模式</a>
-      <a class="gi-sidenav-item" href="#gi-sec-spec" onclick="giNavClick(this,'gi-sec-spec')"><span class="gi-sidenav-icon">🖥️</span>配置要求</a>
+      <a class="gi-sidenav-item active" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-hero" onclick="giNavClick(this,&#39;gi-sec-hero&#39;)"><span class="gi-sidenav-icon">🧭</span>游戏介绍</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-overview" onclick="giNavClick(this,&#39;gi-sec-overview&#39;)"><span class="gi-sidenav-icon">🏝️</span>玩法概述</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-survive" onclick="giNavClick(this,&#39;gi-sec-survive&#39;)"><span class="gi-sidenav-icon">💓</span>生存机制</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-resource" onclick="giNavClick(this,&#39;gi-sec-resource&#39;)"><span class="gi-sidenav-icon">⚒️</span>资源采集</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-build" onclick="giNavClick(this,&#39;gi-sec-build&#39;)"><span class="gi-sidenav-icon">🏗️</span>领地建造</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-craft" onclick="giNavClick(this,&#39;gi-sec-craft&#39;)"><span class="gi-sidenav-icon">⚗️</span>制作装备</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-explore" onclick="giNavClick(this,&#39;gi-sec-explore&#39;)"><span class="gi-sidenav-icon">🏝️</span>探索地标</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-combat" onclick="giNavClick(this,&#39;gi-sec-combat&#39;)"><span class="gi-sidenav-icon">⚔️</span>战斗掠夺</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-social" onclick="giNavClick(this,&#39;gi-sec-social&#39;)"><span class="gi-sidenav-icon">🤝</span>社交合作</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-event" onclick="giNavClick(this,&#39;gi-sec-event&#39;)"><span class="gi-sidenav-icon">🌍</span>动态事件</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-mode" onclick="giNavClick(this,&#39;gi-sec-mode&#39;)"><span class="gi-sidenav-icon">🎮</span>玩法模式</a>
+      <a class="gi-sidenav-item" href="https://yazou-preview.pages.woa.com/prototype-v3-2.html#gi-sec-spec" onclick="giNavClick(this,&#39;gi-sec-spec&#39;)"><span class="gi-sidenav-icon">🖥️</span>配置要求</a>
     </nav>
   </div><!-- /gameinfo-layout -->
 </div><!-- /page-gameinfo -->
@@ -1768,7 +1854,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </ul>
           <div class="gs-tip">💡 砍树的时候，对着树木上的<strong>黄色标记</strong>打；采石的时候，则是对着矿石上的<strong>闪光点</strong>打，采集速度会更快！</div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s1-采集黄色标记.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s1-采集黄色标记.png" loading="lazy">
             <div class="gs-cap">左：砍树对准黄色标记 · 右：采石对准闪光点</div>
           </div>
           <div class="gs-recipe">
@@ -1776,7 +1862,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <div class="gs-recipe-pill">🪵 200 + 🪨 100 <span class="gs-recipe-arrow">→</span><span class="gs-recipe-result">⛏️ 石镐</span></div>
           </div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s1-制作石斧石镐.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s1-制作石斧石镐.png" loading="lazy">
             <div class="gs-cap">制作界面 → 推荐常用，石斧和石镐的配方</div>
           </div>
         </div>
@@ -1791,7 +1877,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <div class="gs-recipe"><div class="gs-recipe-pill">🪵 300 <span class="gs-recipe-arrow">→</span><span class="gs-recipe-result">木矛</span></div></div>
               <p class="gc-body">前期最基础的近战武器，能起到一定的自保作用。使用 50 石头升级成石矛后伤害还能提升。但它有个明显的短板——缺少远程攻击能力，一旦遇到远处的敌人，只有一次投掷攻击的机会。</p>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s1-制作木矛石矛.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s1-制作木矛石矛.png" loading="lazy">
                 <div class="gs-cap">木矛 vs 石矛制作界面对比</div>
               </div>
             </div>
@@ -1801,13 +1887,13 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <div class="gs-recipe"><div class="gs-recipe-pill">🧵 50 + 🪵 200 <span class="gs-recipe-arrow">→</span><span class="gs-recipe-result">猎弓</span></div></div>
               <p class="gc-body">使用 50 布料和 200 木头制作一把弓，再用一些石头和木头制作箭矢，多做一些备用，毕竟箭矢是消耗品。布料很好找，捡地面上的亚麻纤维、砍沙漠里的仙人掌都能轻松获取。</p>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s1-制作猎弓箭矢.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s1-制作猎弓箭矢.png" loading="lazy">
                 <div class="gs-cap">猎弓 + 木制箭矢的制作界面</div>
               </div>
             </div>
           </div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s1-亚麻仙人掌布料.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s1-亚麻仙人掌布料.png" loading="lazy">
             <div class="gs-cap">左：拾取亚麻纤维 · 右：砍仙人掌——布料的两大来源</div>
           </div>
         </div>
@@ -1837,14 +1923,14 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">进游戏后什么都不会，先做什么？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">出生后第一步：拳头打石头收集 100 石头，打树干收集 200 木头。用石头和木头制作斧头和石矛。随后找水喝（喝河水/海水会拉肚子，优先找南瓜等食物）、找食物。新手推荐去废弃超市或加油站搜刮初始物资。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">前期用什么武器防身？</span>
               <span class="step-faq-chevron">▼</span>
@@ -1881,7 +1967,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <li>制作绷带等医疗物品，使用后能快速恢复生命值，应对紧急情况特别实用。</li>
           </ul>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s2-绷带道具.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-绷带道具.png" loading="lazy">
             <div class="gs-cap">绷带道具详情：立即恢复生命值 + 止血</div>
           </div>
         </div>
@@ -1897,7 +1983,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </ul>
           <div class="gs-warn">⚠️ 生肉吃了会中毒掉血，一定要用篝火烤熟再食用</div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s2-野猪烤肉.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-野猪烤肉.png" loading="lazy">
             <div class="gs-cap">野猪 + 篝火烤肉界面（饱腹值 +60）</div>
           </div>
         </div>
@@ -1913,11 +1999,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </ul>
           <div class="gc-grid col2">
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s2-露水收集器.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-露水收集器.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">小型露水收集器：每分钟转化露水</div>
             </div>
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s2-河流喝水.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-河流喝水.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">靠近淡水河流，直接出现"喝水"交互</div>
             </div>
           </div>
@@ -1928,7 +2014,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <p class="gc-body" style="margin-bottom:8px">萌新最容易忽略的点，雪地环境咱们的体温会下降，体温过低会持续掉血。夜晚时气温会更低——沙漠环境也受影响。</p>
           <div class="gs-warn" style="margin-bottom:12px">⚠️ 雪地、夜晚过低 → 持续掉血</div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s2-体温过低提示.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-体温过低提示.png" loading="lazy">
             <div class="gs-cap">雪地中体温过低的 UI 提示</div>
           </div>
           <ul class="gs-list">
@@ -1936,7 +2022,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <li>收集布料制作保暖衣物，就算在夜晚长时间活动，也不用担心体温过低。</li>
           </ul>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s2-篝火取暖.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s2-篝火取暖.png" loading="lazy">
             <div class="gs-cap">篝火可同时提供舒适度（取暖）+ 烤肉</div>
           </div>
         </div>
@@ -1947,21 +2033,21 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">我一直饿/一直渴，该怎么办？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">口渴：优先收集南瓜/蘑菇等植物（含水分）、制作储水器收集雨水，或用熔炉烹饪肉食和蔬菜来补充水分。饱腹：击杀野猪/鹿等动物获取生肉，用篝火烤熟后食用。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">生命值怎么恢复？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">初期：靠进食恢复（吃熟食最高效）；制作绷带（布料×1）可快速止血；之后可制作医疗针（分初级/中级/高级）进行更高效的回血。高等级医疗针效果更强，可在战斗中快速恢复。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">受伤了一直在流血怎么处理？</span>
               <span class="step-faq-chevron">▼</span>
@@ -1999,11 +2085,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </ul>
           <div class="gc-grid col2">
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s3-废料垃圾堆.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s3-废料垃圾堆.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">马路垃圾堆：废料 + 物资箱</div>
             </div>
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s3-分解机废料.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s3-分解机废料.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">分解机：杂物 → 废料（自动转换）</div>
             </div>
           </div>
@@ -2015,7 +2101,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <p class="gc-body" style="margin-bottom:8px">木头作为游戏里最基础的核心资源，用途十分广泛，既能用来制作石斧、木矛等各类基础工具，也能用来搭建属于自己的安全家园，筑牢生存的第一道防线。</p>
           <p class="gc-body" style="margin-bottom:10px">野外树木，随处可见，用石斧直接砍伐。</p>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s3-砍树木头.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s3-砍树木头.png" loading="lazy">
             <div class="gs-cap">石斧砍树，木头掉落（当前 629 木头）</div>
           </div>
           <div class="gs-tip">💡 砍树时盯着树干上的"黄色标记"打，石斧—铁斧—圆斧—电锯，使用高级工具采集速度翻倍。</div>
@@ -2025,7 +2111,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           <div class="gs-title">🪨 石头——工具基石，坚固基地</div>
           <p class="gc-body" style="margin-bottom:8px">石头不仅能做石镐、石矛等基础工具，制作熔炉升级家园，都离不开它。地图各处都有，用石镐直接开采。</p>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s3-采石场景.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s3-采石场景.png" loading="lazy">
             <div class="gs-cap">对准岩石的闪光点敲击，采集速度更快</div>
           </div>
           <div class="gs-tip">💡 采集矿物时，对矿石上的"闪光点"敲击，石镐—铁镐—废料十字镐—电镐，使用高级工具采集速度翻倍。</div>
@@ -2040,7 +2126,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <li>使用遗迹内的分解机，分解针线包和绳子这类物资会产出大量布料。</li>
           </ul>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s3-布料亚麻仙人掌.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s3-布料亚麻仙人掌.png" loading="lazy">
             <div class="gs-cap">左：拾取亚麻纤维 · 右：砍仙人掌获布料</div>
           </div>
           <div class="gs-tip">💡 跑图时地面上的亚麻纤维随处可见，路过沙漠区域时可砍仙人掌，顺路翻垃圾堆还能捡零件盒，获取布料轻轻松松。</div>
@@ -2052,21 +2138,21 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">废料是什么，去哪里找？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">废料（Scrap）是游戏核心货币和科研材料，用于研究蓝图和维持工具柜。获取方式：前往据点的战利品箱（油桶/板条箱等）搜刮；敲烂各种物件；在安全区自动售货机进行商品交换。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">怎么快速获取大量废料？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">①多跑一级据点（废弃超市/垃圾场/仓库）清箱子；②把不需要的零件全部放分解机分解；③中期安全区做商品交换任务；④攻坚二级以上据点回报翻倍</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">布料从哪里获取？老是不够用怎么办？</span>
               <span class="step-faq-chevron">▼</span>
@@ -2137,7 +2223,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             </div>
           </div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s4-工具柜维护.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s4-工具柜维护.png" loading="lazy">
             <div class="gs-cap">工具柜（领地中枢）维护界面：维护时间和资源消耗</div>
           </div>
           <div class="gs-warn">⚠️ 注意——放置工具柜后，别忘记添加领地维护，避免建筑缓慢掉血直到消失。</div>
@@ -2158,13 +2244,13 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="gs-upgrade-node">钢制</span>
           </div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s4-石质建造模式.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s4-石质建造模式.png" loading="lazy">
             <div class="gs-cap">建造模式下的石质小屋，注意石质墙体更耐拆</div>
           </div>
           <p class="gc-body" style="margin-bottom:8px">★ 石质房：初期核心目标，普通工具很难拆破，前期多攒石头，尽快升级到石质。</p>
           <div class="gs-warn">⚠️ 注意——门是建筑的突破口，木→铁→钢，初期升级铁质门，大幅降低被拆概率。</div>
           <div class="gs-img-wrap">
-            <img class="gs-img" src="guide-imgs/s4-门升级界面.png" loading="lazy">
+            <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s4-门升级界面.png" loading="lazy">
             <div class="gs-cap">门类编辑界面：单扇木门 → 单扇金属门</div>
           </div>
         </div>
@@ -2189,28 +2275,28 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">基地建在哪里比较好？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">新手建议选在地图中部偏安全区附近，便于补给。避开主要路口和高价值据点附近（人多容易被打）。山地、树林中隐蔽度高，但资源运输也更麻烦。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">工具柜有什么用？为什么很重要？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">工具柜是领地核心，放置后会产生一个「建筑保护范围」——范围内别人无法建造新建筑。同时工具柜内的废料决定了建筑的「稳固度」，废料耗尽后建筑会逐渐衰减损坏。必须每隔几天补充废料。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">怎么提升基地防御力？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">升级建筑材料（木→石→金属→强化金属），血量依次提升；加装铁门替代木门；在门口铺设尖刺地板；在周围建造外墙增加攻击层数。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">下线之后别人能拆房吗？</span>
               <span class="step-faq-chevron">▼</span>
@@ -2250,7 +2336,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
                 <li><strong>土制手枪</strong>——简易枪械，适合近距离战斗，伤害比猎弓高，但射速较慢，开火稳定性一般。</li>
               </ul>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s5-弓箭瞄准.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s5-弓箭瞄准.png" loading="lazy">
                 <div class="gs-cap">拉弓瞄准：保持安全距离消耗敌人</div>
               </div>
             </div>
@@ -2266,7 +2352,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
                 <div class="gs-flow-item end">二级工作台 <span style="font-family:monospace">250 废料</span></div>
               </div>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s5-科技树战斗.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s5-科技树战斗.png" loading="lazy">
                 <div class="gs-cap">科技树战斗分支：武器解锁路线一览</div>
               </div>
             </div>
@@ -2318,11 +2404,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
           </div>
           <div class="gc-grid col2">
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s5-倒地自救UI.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s5-倒地自救UI.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">倒地濒死：自我救援概率 17%，剩余时间 21 秒</div>
             </div>
             <div class="gs-img-wrap" style="margin:0">
-              <img class="gs-img" src="guide-imgs/s5-复活界面.png" loading="lazy" style="margin:0 0 6px">
+              <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s5-复活界面.png" loading="lazy" style="margin:0 0 6px">
               <div class="gs-cap">复活点选择界面：优先选择睡袋复活点</div>
             </div>
           </div>
@@ -2334,28 +2420,28 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">遭遇其他玩家怎么处理？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">优先判断对方是否有恶意：如果对方不攻击可尝试绕路。迫不得已对抗时：利用地形掩体、先发制人是关键。如实力差距大，跑为上策。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">倒地之后怎么复活？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">倒地后有一段时间进入"濒死"状态，队友可以靠近按互动键急救（需要医疗材料）。无人救援且倒计时归零则死亡，背包物资按模式规则掉落。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">被多人围攻，倒地后队友能救我吗？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">可以，队友靠近后按互动键进行急救，需要消耗急救包。急救时有明显动作，会暴露位置，救援时需掩护。庇护模式死亡惩罚较低，适合新手。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">什么时候能用枪？枪怎么获得？</span>
               <span class="step-faq-chevron">▼</span>
@@ -2400,7 +2486,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
                 <div class="gs-flow-item end">逐步解锁武器、建筑、生存科技</div>
               </div>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s6-科技树界面.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s6-科技树界面.png" loading="lazy">
                 <div class="gs-cap">科技树：战斗 / 生存 / 建筑 / 电力科技分支</div>
               </div>
             </div>
@@ -2418,7 +2504,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
                 <div class="gs-flow-item end">消耗积分提升情报等级 → 解锁独特道具</div>
               </div>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s6-情报等级奖励.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s6-情报等级奖励.png" loading="lazy">
                 <div class="gs-cap">情报奖励界面：等级越高，解锁专属道具越多</div>
               </div>
             </div>
@@ -2452,7 +2538,7 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
               <div class="gc-name" style="color:var(--red)">探索高级据点红卡房</div>
               <p class="gc-body" style="margin-top:6px">高级据点的红卡房内，会刷新一张高级情报，破译的情报积分远高于普通情报，记得携带红卡解锁。</p>
               <div class="gs-img-wrap" style="margin-top:10px">
-                <img class="gs-img" src="guide-imgs/s6-红卡房情报.png" loading="lazy">
+                <img class="gs-img" src="./失控进化·新手站 v3 改版_files/s6-红卡房情报.png" loading="lazy">
                 <div class="gs-cap">高级据点红卡房：高级加密情报，积分丰厚</div>
               </div>
             </div>
@@ -2479,28 +2565,28 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
             <span class="step-faq-title">本节常见问题</span>
           </div>
           <div class="step-faq-list">
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">科技树怎么解锁？有什么顺序建议？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">通过科研台「研究」捡到的物品即可解锁蓝图。新手推荐解锁顺序：石矛→猎弓→绷带→医疗针→储水器→废料冲锋枪/土制手枪→简单锁→睡袋→石质建筑。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">捡到的材料看不懂（齿轮、篷布、管子）有什么用？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">这些是「可循环利用零件」，放进分解机可获得废料和金属碎片。分解机在各个据点都有，不需要自己建造。高价值零件（如高品质齿轮）分解量更多。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">情报系统是什么？</span>
               <span class="step-faq-chevron">▼</span>
             </div>
             <div class="step-faq-a">情报系统是一种类似战令的新机制，旨在提升玩家活跃度，通过局内奖励（加速发育）和局外奖励（如皮肤）增强游戏体验。玩家可从不同难度资源点获取初级/中级/高级加密情报，等级越高，破译时间和经验加成越多。该功能集成在TC工具柜/领地柜中，激活情报站后放入情报即可破译，积累经验升级后即可领取相应奖励。</div>
           </div>
-          <div class="step-faq-item" onclick="this.classList.toggle('open')">
+          <div class="step-faq-item" onclick="this.classList.toggle(&#39;open&#39;)">
             <div class="step-faq-q">
               <span class="step-faq-q-text">什么是"情报等级"？有什么用？</span>
               <span class="step-faq-chevron">▼</span>
@@ -2513,15 +2599,15 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
         <div class="crosslink-section">
           <div class="crosslink-label">📎 新手入门完成！接下来</div>
           <div class="crosslink-cards">
-            <div class="cc-card" onclick="switchPage('weapons')"><span class="cc-icon">🪖</span>规划武器合成路线 →</div>
-            <div class="cc-card" onclick="switchPage('poi')"><span class="cc-icon">📍</span>探索更高级据点 →</div>
-            <div class="cc-card" onclick="switchPage('faq')"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
+            <div class="cc-card" onclick="switchPage(&#39;weapons&#39;)"><span class="cc-icon">🪖</span>规划武器合成路线 →</div>
+            <div class="cc-card" onclick="switchPage(&#39;poi&#39;)"><span class="cc-icon">📍</span>探索更高级据点 →</div>
+            <div class="cc-card" onclick="switchPage(&#39;faq&#39;)"><span class="cc-icon">❓</span>常见问题 FAQ →</div>
           </div>
         </div>
 
         <div class="step-nav-btns">
           <button class="snbtn" onclick="switchStep(5)">← 上一步</button>
-          <button class="snbtn primary" onclick="switchPage('weapons')">查看武器图鉴 →</button>
+          <button class="snbtn primary" onclick="switchPage(&#39;weapons&#39;)">查看武器图鉴 →</button>
         </div>
       </div>
 
@@ -2537,11 +2623,10 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="page-title-row">
       <div class="page-title"><span class="page-title-icon">🪖</span> 武器图鉴</div>
     </div>
-    <div class="page-intro"><strong>使用场景：</strong>手头废料有限？先看合成成本和工作台需求，再选武器路线——客观数据，不推荐，你自己判断。</div>
   </div>
   <div class="page-search-bar">
     <div class="psb-inner">
-      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <input class="psb-input" id="weapon-search" type="text" placeholder="搜索武器名称…" oninput="filterWeaponsBySearch(this.value)">
       <button class="psb-clear" onclick="clearWeaponSearch()" title="清除">✕</button>
     </div>
@@ -2549,17 +2634,258 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   <div class="weapons-carousel">
     <!-- Type filter row (mirrors tier filter) -->
     <div class="tier-filter-row" id="wep-type-filter">
-      <div class="tier-chip t1 active" onclick="filterWeapons('all',this)">全部</div>
-      <div class="tier-chip t4" onclick="filterWeapons('rifle',this)" id="wchip-rifle">🔴 步枪</div>
-      <div class="tier-chip t3" onclick="filterWeapons('mg',this)" id="wchip-mg">🟠 机枪</div>
-      <div class="tier-chip ts" onclick="filterWeapons('smg',this)" id="wchip-smg">🟣 冲锋枪</div>
-      <div class="tier-chip t2" onclick="filterWeapons('pistol',this)" id="wchip-pistol">🔵 手枪</div>
-      <div class="tier-chip t1" onclick="filterWeapons('shotgun',this)" id="wchip-shotgun">🟢 霰弹枪</div>
-      <div class="tier-chip t3" onclick="filterWeapons('bow',this)" id="wchip-bow">🟡 弓弩</div>
-      <div class="tier-chip t2" onclick="filterWeapons('special',this)" id="wchip-special">⚪ 特殊武器</div>
+      <div class="tier-chip t1 active" onclick="filterWeapons(&#39;all&#39;,this)">全部</div>
+      <div class="tier-chip t4" onclick="filterWeapons(&#39;rifle&#39;,this)" id="wchip-rifle">🔴 步枪</div>
+      <div class="tier-chip t3" onclick="filterWeapons(&#39;mg&#39;,this)" id="wchip-mg">🟠 机枪</div>
+      <div class="tier-chip ts" onclick="filterWeapons(&#39;smg&#39;,this)" id="wchip-smg">🟣 冲锋枪</div>
+      <div class="tier-chip t2" onclick="filterWeapons(&#39;pistol&#39;,this)" id="wchip-pistol">🔵 手枪</div>
+      <div class="tier-chip t1" onclick="filterWeapons(&#39;shotgun&#39;,this)" id="wchip-shotgun">🟢 霰弹枪</div>
+      <div class="tier-chip t3" onclick="filterWeapons(&#39;bow&#39;,this)" id="wchip-bow">🟡 弓弩</div>
+      <div class="tier-chip t2" onclick="filterWeapons(&#39;special&#39;,this)" id="wchip-special">⚪ 特殊武器</div>
     </div>
     <!-- Carousel body rendered by JS -->
-    <div id="wep-carousel-body"></div>
+    <div id="wep-carousel-body">
+    <div class="wep-carousel-main">
+      <div class="wep-showcase">
+        <div class="wep-showcase-img" style="background:linear-gradient(135deg,rgba(232,98,26,.12),#0a0c0f)">
+          <div class="wep-showcase-img-placeholder"><div class="wep-big-icon">🏹</div></div>
+          <div class="wep-showcase-overlay">
+            <div class="wep-showcase-type" style="color:var(--orange)">
+              <span class="wep-type-badge badge-bow">弓弩</span>
+            </div>
+            <div class="wep-showcase-name">猎弓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wep-detail-sections">
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">武器简介</div>
+          <p class="wep-desc-text">最基础的弓，无需科技直接制作，开局首选远程武器。</p>
+          <div class="wep-tags-wrap mt12">
+            <span class="wep-tag-chip">弓弩</span>
+            <span class="wep-tag-chip" style="color:var(--text-muted)">无法制作</span>
+          </div>
+        </div>
+
+        <div class="wep-detail-section">
+          <div class="wep-detail-section-title">数据统计</div>
+          <div class="stat-rows">
+            <div class="stat-row-d">
+    <span class="stat-lbl">伤害</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:24%"></div></div>
+    <span class="stat-val-d">50</span>
+  </div>
+            <div class="stat-row-d">
+    <span class="stat-lbl">精准</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:43%"></div></div>
+    <span class="stat-val-d">9</span>
+  </div>
+            <div class="stat-row-d">
+    <span class="stat-lbl">后坐</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:35%"></div></div>
+    <span class="stat-val-d">35</span>
+  </div>
+            <div class="stat-row-d">
+    <span class="stat-lbl">射速</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:17%"></div></div>
+    <span class="stat-val-d">100</span>
+  </div>
+            <div class="stat-row-d">
+    <span class="stat-lbl">射程</span>
+    <div class="stat-track"><div class="stat-fill-d" style="width:2%"></div></div>
+    <span class="stat-val-d">36</span>
+  </div>
+          </div>
+        </div>
+
+        
+    <div class="wep-detail-section">
+      <div class="wep-detail-section-title">制作要求</div>
+      
+      
+      <div class="wep-detail-section-title" style="margin-top:14px">合成材料</div>
+      <div class="materials">
+        
+          <div class="mat-row">
+            <div class="mat-left">木头</div>
+            <span class="mat-qty">×200</span>
+          </div>
+        
+          <div class="mat-row">
+            <div class="mat-left">布</div>
+            <span class="mat-qty">×50</span>
+          </div>
+        
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <div class="wep-strip">
+      
+        <div class="wep-thumb active" onclick="selectWep(0)">
+          <div class="wep-thumb-img">🏹</div>
+          <div class="wep-thumb-label">猎弓</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(1)">
+          <div class="wep-thumb-img">🎯</div>
+          <div class="wep-thumb-label">弩</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(2)">
+          <div class="wep-thumb-img">🏹</div>
+          <div class="wep-thumb-label">复合弓</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(3)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">土制手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(4)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">半自动手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(5)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">17型手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(6)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">M92手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(7)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">左轮手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(8)">
+          <div class="wep-thumb-img">🐍</div>
+          <div class="wep-thumb-label">蟒蛇左轮手枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(9)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">废料冲锋枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(10)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">自制冲锋枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(11)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">MP5A4</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(12)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">汤普森冲锋枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(13)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">单管霰弹枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(14)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">双管霰弹枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(15)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">泵动霰弹枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(16)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">Spas-12霰弹枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(17)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">M4霰弹枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(18)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">AK-47突击步枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(19)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">LR-300突击步枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(20)">
+          <div class="wep-thumb-img">🎯</div>
+          <div class="wep-thumb-label">栓动步枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(21)">
+          <div class="wep-thumb-img">🎯</div>
+          <div class="wep-thumb-label">M39步枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(22)">
+          <div class="wep-thumb-img">🎯</div>
+          <div class="wep-thumb-label">L96狙击步枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(23)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">自制轻机枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(24)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">M249</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(25)">
+          <div class="wep-thumb-img">🔫</div>
+          <div class="wep-thumb-label">加特林机枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(26)">
+          <div class="wep-thumb-img">🔧</div>
+          <div class="wep-thumb-label">钉枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(27)">
+          <div class="wep-thumb-img">🎣</div>
+          <div class="wep-thumb-label">鱼叉枪</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(28)">
+          <div class="wep-thumb-img">🔥</div>
+          <div class="wep-thumb-label">火焰喷射器</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(29)">
+          <div class="wep-thumb-img">🚀</div>
+          <div class="wep-thumb-label">火箭发射器</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(30)">
+          <div class="wep-thumb-img">💥</div>
+          <div class="wep-thumb-label">榴弹发射器</div>
+        </div>
+      
+        <div class="wep-thumb" onclick="selectWep(31)">
+          <div class="wep-thumb-img">🚀</div>
+          <div class="wep-thumb-label">毒刺导弹</div>
+        </div>
+      
+    </div>
+  </div>
   </div>
 </div>
 
@@ -2571,12 +2897,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="page-title-row">
       <div class="page-title"><span class="page-title-icon">📍</span> 据点指南</div>
     </div>
-    <div class="page-intro"><strong>使用场景：</strong>想刷什么等级的资源？选难度，找对应据点——装备不够别硬冲高级区。</div>
   </div>
   <!-- 搜索栏 -->
   <div class="page-search-bar" style="margin-bottom:12px">
     <div class="psb-inner">
-      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <input class="psb-input" id="poi-search" type="text" placeholder="搜索据点名称、资源、关键词…" oninput="searchPoi(this.value)">
       <button class="psb-clear" onclick="clearPoiSearch()" title="清除">✕</button>
     </div>
@@ -2584,24 +2909,226 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
   <div class="poi-carousel" id="poi-main">
     <!-- 等级筛选 -->
     <div class="tier-filter-row" id="poi-tier-filter">
-      <div class="tier-chip t1 active" onclick="filterPoiTier('all',this)">全部</div>
-      <div class="tier-chip t1" onclick="filterPoiTier('tier-1',this)">🟢 一级据点</div>
-      <div class="tier-chip t2" onclick="filterPoiTier('tier-2',this)">🔵 二级据点</div>
-      <div class="tier-chip t3" onclick="filterPoiTier('tier-3',this)">🟡 三级据点</div>
-      <div class="tier-chip t4" onclick="filterPoiTier('tier-4',this)">🔴 四级据点</div>
-      <div class="tier-chip ts" onclick="filterPoiTier('safe',this)">🟣 安全区遗迹</div>
+      <div class="tier-chip t1 active" onclick="filterPoiTier(&#39;all&#39;,this)">全部</div>
+      <div class="tier-chip t1" onclick="filterPoiTier(&#39;tier-1&#39;,this)">🟢 一级据点</div>
+      <div class="tier-chip t2" onclick="filterPoiTier(&#39;tier-2&#39;,this)">🔵 二级据点</div>
+      <div class="tier-chip t3" onclick="filterPoiTier(&#39;tier-3&#39;,this)">🟡 三级据点</div>
+      <div class="tier-chip t4" onclick="filterPoiTier(&#39;tier-4&#39;,this)">🔴 四级据点</div>
+      <div class="tier-chip ts" onclick="filterPoiTier(&#39;safe&#39;,this)">🟣 安全区遗迹</div>
     </div>
     <!-- 资源维度筛选 -->
     <div class="tier-filter-row" id="poi-dim-filter" style="margin-top:6px">
-      <div class="poi-dim-chip tier-chip t1 active" onclick="filterPoiDim('all',this)">全部资源</div>
-      <div class="poi-dim-chip tier-chip t1" onclick="filterPoiDim('green',this)">🟢 绿卡房</div>
-      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim('blue',this)">🔵 蓝卡房</div>
-      <div class="poi-dim-chip tier-chip t4" onclick="filterPoiDim('red',this)">🔴 红卡房</div>
-      <div class="poi-dim-chip tier-chip ts" onclick="filterPoiDim('safe_zone',this)">🛡️ 安全区</div>
-      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim('decomp',this)">🔧 有分解机</div>
+      <div class="poi-dim-chip tier-chip t1 active" onclick="filterPoiDim(&#39;all&#39;,this)">全部资源</div>
+      <div class="poi-dim-chip tier-chip t1" onclick="filterPoiDim(&#39;green&#39;,this)">🟢 绿卡房</div>
+      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim(&#39;blue&#39;,this)">🔵 蓝卡房</div>
+      <div class="poi-dim-chip tier-chip t4" onclick="filterPoiDim(&#39;red&#39;,this)">🔴 红卡房</div>
+      <div class="poi-dim-chip tier-chip ts" onclick="filterPoiDim(&#39;safe_zone&#39;,this)">🛡️ 安全区</div>
+      <div class="poi-dim-chip tier-chip t2" onclick="filterPoiDim(&#39;decomp&#39;,this)">🔧 有分解机</div>
     </div>
     <!-- carousel rendered by JS -->
-    <div id="poi-carousel-body"></div>
+    <div id="poi-carousel-body">
+    <div class="poi-carousel-main">
+      <div class="poi-showcase">
+        <div class="poi-showcase-img" style="background:linear-gradient(135deg,#4ade8015,#0a0c0f)">
+          <img src="./失控进化·新手站 v3 改版_files/swip-jyz-rJco2nFm.png" alt="加油站" class="poi-showcase-real-img" onerror="this.style.display=&#39;none&#39;">
+          <div class="poi-showcase-overlay">
+            <div class="poi-showcase-tier" style="color:#4ade80">一级据点</div>
+            <div class="poi-showcase-name">加油站</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="poi-detail">
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">据点介绍</div>
+          <p class="poi-desc-text">产出大量食物和绿卡，车库下的地洞也有收获</p>
+        </div>
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">危险等级</div>
+          <div class="danger-meter"><div class="danger-pip active-1"></div><div class="danger-pip"></div><div class="danger-pip"></div><div class="danger-pip"></div></div>
+          <div class="danger-label">低风险</div>
+        </div>
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">公共设施</div>
+          <div class="poi-tags-wrap">
+            <span class="poi-tag-chip">🔧 分解机</span>
+          </div>
+        </div>
+        <div class="poi-detail-section">
+          <div class="poi-detail-section-title">产出资源</div>
+          <div class="reward-items">
+            <div class="reward-row"><span class="reward-item-icon">🗑️</span><span class="reward-cat-badge rcat-base">基础</span><span class="reward-item-name">若干废料&amp;战利品</span></div><div class="reward-row"><span class="reward-item-icon">📄</span><span class="reward-cat-badge rcat-base">基础</span><span class="reward-item-name">初级加密情报</span></div><div class="reward-row"><span class="reward-item-icon">🟢</span><span class="reward-cat-badge rcat-base">基础</span><span class="reward-item-name">绿卡</span></div><div class="reward-row"><span class="reward-item-icon">🍖</span><span class="reward-cat-badge rcat-base">基础</span><span class="reward-item-name">大量食物</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="poi-strip">
+      <div class="poi-thumb active" onclick="selectPoi(0)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            <img src="data:image/png;base64,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DAYhyTI0GgGiqIdep4sXqtVqIQiRdIZhEAwGEQ6HAQBWa2pcs8LhMELhMARBQFtbO157/Q24XC4UFOQjFApD4HlkZ2Wio6MT72/8gE9JSSErVqz4QXFx8dTa2to4nN7e3uzHH398QmlpaQrLssKlwrkQmPhypCiK+srKygksy44LBoPikSNHet577z2tLMsTli5dOmf69OlWRVEa166tOs4wzAKGGfBs9rQ05GRlwWKxxNPOtrTAnmZDTlYWRL1+SKV9fX3neQedVgu9TgdZlnHkyL8GAdZA1Oshinr86+hRvP/+Rj41NZU8+uijVxUVFZXW1tambd++PdDV1UX6+/uzHnvssQlTp05NIYQIuITpw0g2Jm5oDQaDbs2aNeMZhikJhULikSNHet59912toigly5YtK5s2bZqNAg2/+92zJyiwoLevH6o60DGnyxV/86oasXs/vf02dHR2Qq/TYdKkiREQhCAYDCItLQ2EkCFwXG43mHYGiiJjMHS3x4vWtnZQSuH1+rAvanNuvfUn0ooVK37w4osvYseOHQcAtM6cOVMAkLFixQrp5ZdfPvL55593Y0ApRrQ5FwIDo9GoXbt27ThCSFE4HNYdO3as85133tHIsly0bNmyuVdddZWVZdmGF1548XhXT+8NscwajYDUlBR4fT709zvQDwdSkkfFOzthwgRMuNirAiDLMrxeH9JsVrR3dMLhdAIAYlGzPc2GtvYOOF2ueB67PQ0tra14//2NETg///lVL770krpz506ZUto2e/ZsjmGY9OXLl0ssyyq7du3qwsBaznlLpCMNJWqxWPj169cXC4JQKMuy5tixYy0bNmyAoihjly9fXj516lSbIAgNa9asPWYwGm6wmM3xzAIvwGQ0wmQ0/pvuX1g4jsNtt/4E48aVjHg/YdDQjKeZzUgwm7HvwEG8//5G3mqzMY888si0oqKiKTt37kyqra119/X1SYqipC1fvnx0WVlZAi7ioYZoTHp6OoLBoFBZWVmi0Wiu8Pl87MmTJxs3bNggqKo6uqKiYl5paaldo9E0PPPsc0edTtfNbNSAMgwDhmHg8/vR2NQMRZbjaRTnR5YA0NLSAoPBgMTExPPu5efnIzc3FyzD4u+f/d8h+RvONAEACAEYwkBRVTTG0wgO1dUDBPxPb79demj58mv+vHp1YNeuXW6O485df/31WpvN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" alt="加油站" class="poi-thumb-icon" onerror="this.style.display=&#39;none&#39;"><span class="poi-thumb-emoji-fallback" style="display:none">⛽</span>
+            <span class="poi-card-badge green">🟢</span>
+          </div>
+          <div class="poi-thumb-label">加油站</div>
+        </div><div class="poi-thumb" onclick="selectPoi(1)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            🗑️
+            <span class="poi-card-badge green">🟢</span>
+          </div>
+          <div class="poi-thumb-label">垃圾场</div>
+        </div><div class="poi-thumb" onclick="selectPoi(2)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            🏮
+            <span class="poi-card-badge green">🟢</span>
+          </div>
+          <div class="poi-thumb-label">灯塔</div>
+        </div><div class="poi-thumb" onclick="selectPoi(3)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABmJLR0QA/wD/AP+gvaeTAAAfk0lEQVR4nO2ceXxURdrvf3W2Xk53J521OxuBBBhIQthxRC5LSFjC6B2941XHDRxkC8yivHPnzoyCHx3U11FmFAUDEXD39WUblRFkkXEJS1AksggBsu/p7nSfXs5W949OdzoQGByFuX/4fD79Od2VU6eqvv3UU8/zVHUIpRQ/yKXC/Ls78P+r/ADmMvIDmMsJpTT6ut6SlJSE9PR07u233x5UVVU1bNq0aVae5wnP89e9L7EcKKX/Fo0hCGsqA4Bft27dgMTExIyOjg7nc889lzNlyhRbzN//bRpNYjWFEHLN20PPgC0WC79p06Ysg8GQoSiKDoAyDCOkpKR0/f73vz/38ccfd2uaRgFQANq17tjFM4a71g3GSAQKJ4qiUF5enk0pzfL7/cyZM2dqA4FAMCcnJ0tRlIzf/e53vKqq5z/55BO3rutqT/1rDidWrhcYAoBFGIppzZo12bquD/D7/UJNTU3zn//8Z+Lz+Qx33HGHd+rUqTZFUbJ/9atfmXRd/+aTTz7pRC+U6wbnekylCBTeYrEYn3322VyDwTBQlmXTyZMn2999913NYDDkCIJgbGlpqZ00aZI0ZcqU5MTERAPLsvVr1649eeDAgQ6Eoai4RnCu91SKGFDOZrOZnnzyyVyDwTA4EAiYjx8/7t66dauVEDJo3rx59zidztTy8vJtu3fv/kxRFKmoqMicmJg46Be/+AUL4MSBAwdaY/qrI2x7rplcS42JQGHj4uLMq1atGiKK4hC/3y9++eWX/u3btxt0XR9aVlb2P8ePH59tMpnYurq67hdeeGHXsWPHKidPnuyePn266HA4qCzL51977bXj+/bta0MYiorvGc7FGnOtlkPS82KSkpLExx9/fEhcXNxQv98fV1VVFdq6datN1/VRS5cu/V/jxo0bKAjCmY8/PvD3jIwM4+LFi2eNGDFi2v79+50ffvih2trayhmNxkF33XXXiKKiohT0Ts1IG9dErgWYyOrDOhwO8Y9//OPglJSUH3m9XtvRo0eD27dvj9N1fdTixYtvHj9+fJbRaDz70tq1X739X+/OfO31N4SBAwcKixYtmpKfnz/lwIEDjp07d6otLS2cKIqDb7/99sLi4uLUnjZ4XEM43zeYyLfJpKeni8uXLx+Snp4+zOVy2aqqqoLbt28XKaWFZWVlsyZOnJjO83xNefn66lBIvh0AKg8ewqZNm/nc3Fx+yZIlPy4oKJj0j3/8I3Xnzp1Ka2srEx8fP/i2224bWVJS4sA1hvN92pioimdlZVl/+ctfDs3JyRnW1tZmOXz4sH/79u0igNELFy4snjJlipNSWrPqyae+bm5pvTn2ISaTEaNGFuL+++5TTpw4oaxdu/bw8ePHP5k8eXLbnDlzDA6Hg7rd7rPbtm07tnPnzib0OoDfabW6VjYmCmXgwIHWsrKyoUOGDBne3t5uO3jwYKAHyphFixaVTJs2zUkpramoqDjp9fr6QLGIIrIHDMCpU6dRUfEKP3z4cH7hwoXjCgoKbtq/f3/ye++9J7e0tDAJCQmDb7vttlEzZ8509oyB62n/e5PvA0wECnJycqyLFy/+0fDhwwtaWlpsBw8elHbs2GEGMHbBggXFRUVFDlVVa9asefGkqmpzLp4ASUmJYBkGiqqi8tBhVFS8wufl5fELFiwYV1BQMOnjjz9Ofv/990Otra3EZrPl/uxnPxszY8YMZ08fvlc439WPiULJzc21Pvjgg8Py8/PzGxsbxYMHD/q2b99uYll23Pz584tmlJQ4gqFQzapVT57yStIcg8GAYCDY52Ft7R3o9noR6CmvPHQYAPgHHpiHhQsXjlu3bh3279//CSGkvbS01Jiamjr4zjvvhKZpRz/66KOWmPF8Zyfwu4CJrD4YMmSIbf78+cMLCgrym5qaxMrKSt+OHTtMLMuOW7BgQVFJSYkj4PfXvLx+/SmGZUslyQ9J8oMQYMjgXMiyjAu1dfD7/fD7/QDC5YqiXALnpZdewr59+z4F0D5nzhxjcnLykLlz5xJN047u27evBb2+zXeC869OpahNGTx4sO3BBx/My8/PH9HS0mKtrKz0bd++3QBg/IMPPlg0a9YsRyAQqHlu9epTlKKUYXu1nRAGHMeB4y79fjiWjZZXHjqMDRsq+OHDh/OLFi0an5+fP3Hfvn3JH3zwQbCtrQ0syw5euHDhmEmTJjkRXqlYfMdp9a+sStHUweDBg62LFy/OHzp06IjW1lbx888/92zbtk1gGGbC/Pnzp82ePdvh9Xprnnr6P0+1tLaVEgJQCphNJgRDQeg6RaQMAAwGAQIvwB8IQNe1aLnA82BYFiNHFGDu3PuV06dPq2vWrDlUXV39aVFRUfvMmTPNycnJMJlMNc8880zVp59+2gJAwbeIrb7rqhR183NycqxLly4tGDp0aGF7e7vl4MGDnm3btoU1Zf78aaWlpQ6fz1ezcePGU16fVBpuPPyQtDQncnNyIPA8YvvjcDgwICsTFlGMlpvNJuTm5iApKRGVhw7jlY2b+KFDh3JlZWXjC/LzJ+7Zsyf1ww8/9Le1tRFJkgb/9re/HTtx4sSI5vzLBpldsWJF9MPKlSuvdG9k+rDZ2dnW5cuXFw4YMGBEZ2en5eDBg+4tW7YYAIxbtHBh0axZsxw+n69m9V/+csrrlUq9Xi90XY8+SNc1sAwDKRCApsV+oRSapsPr9UbLjUYjCIAulwuKoqKhsREdHR3stKlTMWTwYOeF2lqmsrLSTSl1paam8hzHJZSUlBgvXLjgra+vD6DX5lwxrorlAFz9VIpCSU9Ptzz66KMjUlJSCj0ej3j48OHOd99916Dr+tiFCxdOnzlrlkPy+WpW/+Wvpy7U1pVGHiAIAhIT7Ghuae3z4AEDsqDIMpqaW/qWZ2VCVVU0NjX3Kc/KzICu68jIyMA9d/9cqa+v15977rnK6urqg8XFxc1Tp04VU1NTaVJS0rmVK1ceOXjwYCulNITe4LNfuXgqXQ2YaJIpJSXFvGrVqpF2u32E1+sVq6qqOt955x2DrutjFi5cWFxSUuIIBAI1GzduPOVye0pr6+oxo3g67rzzDjDMd3eZdF3Hzp1/R/XXX+PrEydxw4TxuPvndykN9fX6c6tXV1ZXVx8qLi5umjJlijkCZ8WKFUeqqqraNE0L4Qoe8rcFE4Vit9vNq1evHimK4ghJkqxVVVXt77zzjlFV1VFLliwpmT59uiMUCtX8adWTpzzd3lJNVaGoKp5+8k9wOBxob2+H5PeDIQT9tUkpBQgBQdgWRbpCKYWqqrBarUhJSUFraxv+8MgjCIVkEEJww4RxuPOOO5TW1lb6zDPPfP71118fKioqapo6dao5JSVFS0xMPPfEE098cejQodYrwfk2YCKrj2CxWMzr1q0byfP8iEAgYPniiy/a33rrrSiUKVOmOHRdr1n9l7+eOnf+QnT6TJ50Ex54YB4CgQAWLFoC0gNFEATwPIdAINjH9jidDiTa7aitr4fX6wMQnoIZ6WnQdR3/93f/B0ajES+Xr8ehQ4eRnp4GSinS0tLwv2//mdLa2kqfffbZyurq6oNFRUVNU6ZMMaakpGgJCQnnV61aFYEj9wfnalelaDpSFEVzeXn5SJZlRwSDQfHYsWPtb775plFV1ZFLliwpnjx5skPTtJqKiopTDMOUMkwv3JkzZwAAjhypAsMw0cbT05wYOGAARLO5T6MGQYCm61DVXlNgMhphNplgNpvxeWVl+LkzSmA0GiCazRBFM746fhxvvfU2n5qaSh5++OEb8vLyxu/Zsydt7969gdbWVtLV1TVg+fLlIydMmJBCCBFwFatVf2CihtZisZg2bNhQyLJsgaIo4rFjx9rfeOMNg6ZpBUuXLi256aabnBQ4+6c/rTrZ1NxSeu78Beh6ePDjxoxGeno6gsEgNr36Wh/NcHs8cHs8CMmhPg1LkoT6hoZoSAAAnu5uNDY1o6GhAa+/8RaCwSCysrKQm5uDhsYmNDQ0weeT8PnBQ3jrrbf55ORk8tBDD/04Ly9v/L59+9L27dsXaGtrQ3d3d+ZDDz2UP3HixETEuB3fFgysVquxoqJiBMuyeYqimKqrq1tef/11TlXVvKVLl8644YYbHCzLnv3zM8+eam3vmNPW3gFd12EwCMjKzMDs2bMAAMe++gqKoiB7QBayMjOQmJgAl8uNhsYmyLKCrMwMOFJTAADtHZ3w+SQQAmRmpCPN6QAAuNxudHt9kGUZJ06cAADMnjUbbo8Hnu5uAEB6ehrqGhqimvPQb35zQ15e3rj9+/c79uzZE2hra6OSJGUsW7Zs+OTJkxNjxtrvitMfGBofH89v3LgxXxCE4aqqGqqrq+s2b94MTdOGLVu2bOaECROcgiCcXb9+wwmLVZwTHxcXrSzwAtLT0pCTk4NQKIQ1L64FAMiyDJvVCpvVGr2XZRjYrFYkJSbC6Ujt04k4mw12e/wlndu7dx80TcOQIYP7lNvj4mCPi4tqjsPpZH7961/f2AMnce/evZ7Ozk5F07S0ZcuWDSkpKbHjCl7xJUFKUlKSUF5eXmAwGH4kSRJ7+vTpms2bNwu6rg8pKysrHT9+fLrBYDj7xKonq91uz60swyAYDIJhGDAMA8nvx403/hgAUFlZCY7joKoqmppb4HJ7oKkqjEYDAAJN03Chtg6EYYAeo8wwTLi8ri7qKpOYlexMTQ0++/xzTLrpJhACMISBpuuoOXc+eu/hqqMAAf/zu+5Sfrls2aTnX3gh8PHHH3dzHFc/e/Zso9PpTC0rK/MbjUZ5x44d7v7A9FmVMjMz+RdffDFfFMUCSZKE06dP161Zs4YqijJ2wYIFD4wfPz7baDKdefnll7869lX17ZF6JqMRGRnpMAgCTpw6hRdfeB5msxmdnZ1QVbWP4SWEgOd5MAwDXdcvWboJYUBpb3msZ6z3GGaO45CSkoIVKx9DSJbR2NgUvcdmsyIzIx2dnV3Izs7GPXf/XKmtrZXXrl27vbq6+v0ZM2a03Hzzzebk5GRW07T6119//Zs333zTd8V9pccffzw/ISFhiNvtDn399denV69eHUpKSvofd999932jR48eyHHcyfXrNxzVVO2e2Hrx9ngYBAHBUAi63ntyIjExERdLe3s7Tp48BaPRgJAs9wEj8DwYhoUsh6DpOhRZwfjx42Aymfr7UsEwBH7J36dM4AUQEMiKgsqDh6DrOn/fvffQhYsWzXnj9df9O3fufDsQCFy4++677ampqYm333579sSJEzsA9HG9+4AZNWqUvaWlxUwpdbtcLldra6uQk5MTP2zYsGyz2cxIknS+qakpKAgCBJ5HfHwcur0+NDe3QNc0dHR2wWg09lmBLpZAMIgtW7dCkvzwSVKfv6UkJyMYDKC7x4cBgMLCEZcFc7bm/CVliqKgta0dXV0uAEBTUxM0TQvkDBoUl5WVlSpJElNbW+tXVdUYCoXMqamp5mHDhl3SQB8wf/3rX08tX75cqKmpSRk6dOjgOXPmtFRWVp5+9dVX37/33nt/Yrfb55QtWfzeIytWbLZabfemJCcjMTERjU1NaG1rBwBYLZYrpi8yMzJw1113wu12g2NZ8LwAgELX9T7ThmEYOBwOxMfHX/ZZsRJZwWJjruE/Gop58+a6BUGI/9uOHdV///vfP8/NzQ3Onj07xWQy2RISEvyHDx9uevPNN7s++eSTy4PZsGFDE8dxWLRo0ShN0xy33HKLUVGUjp07d+6UZdk8d+7caampqXNWPPLIh089/Z9vArhTURQoSq9DpijKFQdACMGokSOvarDfRhLsdgC9YJwOB37xiwc8oijGb9u27eymTZs+MJlMJ0tLS02FhYXxKSkpvs8++6xuzZo1LWfPnr0kuLxkVSovL2/Rdf3Y3LlzGVmWnaWlpaZgMNi5a9eu3ZqmGefNm3djWlrajN/+x/Ldq556+r8UWfmZpuvRIDEQDF6301lsTzZQ13Wcu3ABQDjGSnM68dBvft1tMpnitmzZcmHTpk27BEE4NXPmTHb48OHxCQkJ7gMHDtSVl5c319bW9htxXwJG13VaXl7eomla9V133cUoipJ58803C6qqtu7evfsjANz9998/LjMzs/i3yx/+6NGVj/33wOzs20SzGZRSnPrmzLUjcZEMGZwLAGhoaITXF7ZLOYMGomzJ4m5BEGxbt26t27hx4z5BEE7MmDFDLSgoEJOTk92ffvppfUVFRVNTU5OKsIN3yTd5Oc+XVlRUNL/22mvVoig2OhwO8y233GIePXp00+7du3dv3LjxSG1tbSgzM3P6Yysejff5fP/NMAxUTbuuZ/ncbjdcLlcUSprTgbIli7s5jrPt2LGjvgfKV8XFxYGCggI+JSXFe+jQofPl5eUNTU1N8mXGD6D/XQId4RhC3bhxY5Ou6/jJT36ip6Wlpf30pz8llNL6Xbt27aaUknvuuWfMoEGDisqWLN7z/Atrtni9vlv7S2xfK4lNeqU5HVj+8EPdDMPY3nvvvfqKioq9PVC8hYWFJDk52XXkyJFzr7zySkNHR0ckGNNwmcze5YhFKqibN29u/Nvf/nacYZj6jIwM3HLLLUxhYWHd7t27d7366qtHampqQllZWUXLypbEhWR5i8lohDXG7b8e4nSEoQCwffDBB/UbNmzYKwjC8eLi4u7CwkIkJye7jh8/fnb9+vV1HR0dfvRu615Wvf9ZoioSgbL3339/2tSpU4cSQpx1dXV069at+PLLL7OKi4tL7r333jGDBg0y1NfX733yqafduTk5t8qKgqam5qivMiArE6LZjOaWcGgQEbs9HhzLQtU0uFzuaD/yhv0Iqqbh1Olv+nQof/gw6LqOE6dOA+jVFE3TrLt3765fv379XqPRWF1SUuIpLCzUExMTXd98803NSy+9VO/xePzozcX0gfKvZPCiaYj777/fMWnSpCE8z6dduHAB27Ztw1dffTWguLi4+J577hk7aNAgQ11t7d6nn/mzW1G1W1VVRVZmBtw90bHRaEQwGNbirMwMuNzuaEKqtw/hEMliEUF1Csnvj8nmhfe3KSj8/gCcjlT8x/KHu2VZtuzZs6e+vLx8j8lkOjFjxgxPQUGBZrfbXefOnTv7/PPPN/p8vgB6t1Mu0ZR/Necb2Rtm5s2bl3rDDTcM4TjOWVdXh+3btzPHjx8fUFJSUnLfffeNycrKMjQ0NOx9ZMVj7gFZmbfG2WyQFQVnztb0JqrS02CPi0NdfX0fLzfNGXbo6urqo5qWkGCHIzUceTc0NETvHzQwG79ctrQ7FAqJe/bsaSgvL//IZDKdmDlzpjcvL0+x2WyuxsbGc88880xDMBi8IpT+wFxNhjpy1lYFoFVUVLR++umnpxVFacjMzNRLS0vV/Pz8C7t27dq9adOmqvr6ejk9PX3aykf/GOf3+7eEZBkNjY19GtY1DSFZ7uMYAoCmhYNEvc+94TJVVaNJMKfDgWVLy7qDwaC4d+/eCJSvZ8yY4Rk+fLgiimJXc3NzzVNPPXVVUPqTb7MTGXuim7333nuTb7zxxhxCiPPChQvM+++/z588eXLg9OnTix944IGxTqeTb2pq2vPIisc8DMPcyrIs4uJskENynxgpIcEOTdWiCadoud0OXdfh9nj6lOfmDELZksXdsiyLe/fubVi3bt1us9l8YsaMGZ68vDzNZDK5Ojs7a5544okmTdOCCO9I/lMo32UnkiK8lGsA9M2bN7cfOHDgLKW0MSsrS5k5c6Y8bNiw8x999NGeDRs2HGltbVWdTmfRyhWPxOmatsVoMCDN4UBSUm/EzbIs0hwOZGak92mIEII0pwMZ6Wl9yiN+iizL1j179jS8/PLLuyM2JS8vTzMajZ0ul6vm8ccfj0D51poS7UMsqXQTn0UAKwATADMFRAAWEn5vJiRcTkBEhD+LRmtcnCN7UCLHcWapu5vvbKw3qMGAGOdMTxg54QabwWBAW3OL9/TRw7oYnxCnKjJCUthOEBDwBgOoTqEqoZ6ysHAGI0ApNDkEEIA3mjFszFidZVmm/vw5ufXMSTchpNuclCrbEhJlUEh+n9flaaztAuAHIAGQKKUBAEFQBHTAr4P6KYUfQKDnvoAOBM/7Qn1c9j5gilLEbABxPYM3oReMBYDIEpgIYCaE9HwmFsLAxPIm0ezIsBLAovl9gtrdxUNTTLzFbksdXmjmWRb+zvaAr/YMwBATw/JgqAaiaz0gwvtJDMsBLAeqyiBUj0JiBBMsGdmUMCzxtzWpsqvVTwjxMyZrkDdbNTBMQA363Vp3lweE+ikQoJR6KRCgOgI0DCSgg/o1nUq6Dkmn1K9TSDrgV4HAlgb36VgwfdzUve3+iJGVEd4Uj7wPAeASDbw11Sbm8SyXSQjMmk71UEj1tbR3umhXoHvQoEGEsGbqYRStubVZDTXW6uk+FcOGDTOHVGLqMiWpzS0tisHA8ALPw9Md6GOAbTYrDALQ7ZVBdR0sy0AQBKTHJ1ExRElbW5Ny8uRJHyHEl5qaGkowmhXi14Ner6e7oaHBL4piMs/zIiGEpRSSpmmNkiR9JctysGcMgZ6rjF7boyFsIvpIf/77xZlzAgDZcWKG3WIueiTXPjDHItiNLMMFNV074w35VnzDuTu6ffVnz571Dxw4kBNFkUtNTaWdnZ3U7/cTQoielpbGZGRkcPn5+bSrq0uvrq5mLjb2kTQoyxAUjh6DBLsdLMtC13Xicrloc3MzFQRBs9lsus1mA6VUdblcwc7OTiEuLi577NixcfHx8RaO41hVVVWPx5N19OjRNEmS9kmSdBZhmxo7vqv2fLMQY2MQnkpiiklIzUiIv/O54Yn5aSY+7uKHNPrlwNLjbW0XujznNd7AZ2dnW3RdN3d3d6eOHTtWtFqtl+zfeL1e+tlnnxMA0KkOWVZACIFBEHDjjT/uN6zwer16ZWVlwGq1dvI87/d4PL62tjY5Pj4+66abbkq0WCyXZOIkSfJ89tlnX7vd7i2yLHcgbFd8PddQz9VPKT0bW++qVqVUm2XUI7nxg/qDAgDpZsH06JDEhBSrmOT3+9Vz586FZFk2FRQUGPuDAgBWq5WMHj1KN5mM0S0VnmMxavSoy8ZaVquVGTVqlKDrurGzs1Nubm5WRFG0jx07Nr4/KAAgimLc6NGjB1qt1gL0+mQRrdFjPveRy02liL9CABCeYzMHWYRLM9sxMthqMBs5zgKgLRgMKh6Ph4+Pj79iqJ2QkEACwaAMQAAAwjDRTNzlJD4+npMkiW1vb5cBaDzPi/Hx8f0nhXskLi4ukWXZjH7GGfvqIxdrTARGhCwAUIYQo4FhrvhDRSPLMAxDOPSeQ2FYlr2iRjIMQ1JTUhif19cNAEaDIZqVu5ywLEs0TYt+24QQ7p+1w7IsTwgxohfAZYFE+9ZPWayqAQDRKQ2EdP2Kydygpuu6TpWeZzKUUlVV1ctvFyC8Z2S1WrmxY8ewVovY7XQ66ZV2GABAVVWdUhpx2jRKqapp2j9rR6GUBtH/tLkqjYncGPFyAYDIqlZ/zid3XqnxM96QP6gq3p56VFEUye12h65Ux+Vy6YQQJCcnixMmTLBarVbicrmu6KW63W5ZUZRIToVRFMXndrsDV6rj8Xi6NE1rQP+aEjvWqFwMJtY4Rf6mt3X7jj12xn22KaC4+2u43i8HVn7T2dXm9bdH6vj9/q4jR454vV6v3F8dr9erHTlyJFRTUyNJkkQBkJaWFvnw4cOy1+vtd0/Z6/UqR44cCfj9/khgxUiS1HXkyBGX1+vtF44kSZ6jR4+e93q91bjUrkR/PnRxvYuX62yEl2tzzEsEYB4QJ+YmiqaiP+QmDMyxCAkGlnAhjWpnvCHfym86Xe1eqbbFHwoibNA5AJzBYLCJougcM2aM1W63CxzHMaqq6m63W/vyyy9ln8/nCwQCutPhsJhFkT1//rzEcRy12WziqFGjhPj4eDZSx+VyKVVVVQFJktpDoZAXYQdNBqAYjUZeFMXMMWPG2O12u8iyLKtpmup2u91ffPHFeUmSDkiSdA69YUDsKwggSCk9dTVgYv0YS+R9goFPTLGKIw08lw4Cs65TGlRUb4vH1+FVNQ2AAWGPOXKUlGdZVjCbzYkcx5kZhuF6TlSpHMcFg8Gg7na7qaqqDADCMIxusVhgtVoZSqkpFAqxAIiu65qqqiG/3+/tOS4mo9d7VQCEWJaFxWKx8zxvIYRwlNKApmkNPp/vuKIoXTFQLr76rxaMLQZMVGNi3psAGHuuYg8McwyQPmDQ8/ulnisPgGVZlk1OTmY5jiOyLKOjo0OjlMJqtTI2m41hWZZ2dXVpPVMqMrUjkX3kR6OhGDARlz/isMkXaYTcDxDpIo05GQumj58xNcnEAoQFCEcIOIByBOAIiMAABhDwhEBgQIwEMDIMMTKAiRCYGEIEBoRnCHiGRK8cAXiGAcOCcASEJwQMISAMURlWEBiGMROamEah65TheIYQQnUlSInDSInDGHtGNxZOLAyFAgYKhChFgIIyFJB1SsO2QwenAX6dUl2nVNMo1XRKVZ1C0SkUDVA0Si/xEfqAOe1TYr8RJeYVAhA+XUfAkHBKixIChvSsYgSQe8638QTgCQFLQFjSY2/Cn8Nn3yIxEsMGGGNcAksYjgAAozEIej2aFpDCHinps3xEIKkxfZJppI8UQRouCwII0V5NiKQdQjoQ0imVabhepK5G6aUHiK73vzAAYsY6f/58arFYTFOmTIkXRVE4c+aM5w9/+EM3wzB6e3v7Pw30vk+5Xr+ivWIf0NezDng8Hp/dbu9evXq1D70+Rew9113IxaR+kLD88I91LiM/gLmM/D+hVl7dfsgi6gAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=" alt="废弃超市" class="poi-thumb-icon" onerror="this.style.display=&#39;none&#39;"><span class="poi-thumb-emoji-fallback" style="display:none">🏪</span>
+            <span class="poi-card-badge green">🟢</span>
+          </div>
+          <div class="poi-thumb-label">废弃超市</div>
+        </div><div class="poi-thumb" onclick="selectPoi(4)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            🏚️
+            
+          </div>
+          <div class="poi-thumb-label">废弃木屋</div>
+        </div><div class="poi-thumb" onclick="selectPoi(5)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            📦
+            
+          </div>
+          <div class="poi-thumb-label">仓库</div>
+        </div><div class="poi-thumb" onclick="selectPoi(6)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            🌋
+            
+          </div>
+          <div class="poi-thumb-label">硫磺矿场</div>
+        </div><div class="poi-thumb" onclick="selectPoi(7)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            🪨
+            
+          </div>
+          <div class="poi-thumb-label">采石矿场</div>
+        </div><div class="poi-thumb" onclick="selectPoi(8)">
+          <div class="poi-thumb-img" style="background:#4ade8015;position:relative">
+            ⚙️
+            
+          </div>
+          <div class="poi-thumb-label">高级金属矿场</div>
+        </div><div class="poi-thumb" onclick="selectPoi(9)">
+          <div class="poi-thumb-img" style="background:#60a5fa15;position:relative">
+            📡
+            <span class="poi-card-badge blue">🔵</span>
+          </div>
+          <div class="poi-thumb-label">雷达残骸</div>
+        </div><div class="poi-thumb" onclick="selectPoi(10)">
+          <div class="poi-thumb-img" style="background:#60a5fa15;position:relative">
+            <img src="data:image/png;base64,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" alt="大铁球" class="poi-thumb-icon" onerror="this.style.display=&#39;none&#39;"><span class="poi-thumb-emoji-fallback" style="display:none">🔮</span>
+            
+          </div>
+          <div class="poi-thumb-label">大铁球</div>
+        </div><div class="poi-thumb" onclick="selectPoi(11)">
+          <div class="poi-thumb-img" style="background:#60a5fa15;position:relative">
+            🚢
+            <span class="poi-card-badge blue">🔵</span>
+          </div>
+          <div class="poi-thumb-label">货运港口</div>
+        </div><div class="poi-thumb" onclick="selectPoi(12)">
+          <div class="poi-thumb-img" style="background:#60a5fa15;position:relative">
+            ⛴️
+            <span class="poi-card-badge blue">🔵</span>
+          </div>
+          <div class="poi-thumb-label">轮渡港口</div>
+        </div><div class="poi-thumb" onclick="selectPoi(13)">
+          <div class="poi-thumb-img" style="background:#60a5fa15;position:relative">
+            🚂
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">列车站</div>
+        </div><div class="poi-thumb" onclick="selectPoi(14)">
+          <div class="poi-thumb-img" style="background:#f9731615;position:relative">
+            🚀
+            
+          </div>
+          <div class="poi-thumb-label">军事基地</div>
+        </div><div class="poi-thumb" onclick="selectPoi(15)">
+          <div class="poi-thumb-img" style="background:#f9731615;position:relative">
+            ⚡
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">发电站</div>
+        </div><div class="poi-thumb" onclick="selectPoi(16)">
+          <div class="poi-thumb-img" style="background:#f9731615;position:relative">
+            🏭
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">污水处理厂</div>
+        </div><div class="poi-thumb" onclick="selectPoi(17)">
+          <div class="poi-thumb-img" style="background:#ef444415;position:relative">
+            🪖
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">军事隧道</div>
+        </div><div class="poi-thumb" onclick="selectPoi(18)">
+          <div class="poi-thumb-img" style="background:#ef444415;position:relative">
+            <img src="data:image/png;base64,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" alt="火箭发射基地" class="poi-thumb-icon" onerror="this.style.display=&#39;none&#39;"><span class="poi-thumb-emoji-fallback" style="display:none">🛸</span>
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">火箭发射基地</div>
+        </div><div class="poi-thumb" onclick="selectPoi(19)">
+          <div class="poi-thumb-img" style="background:#ef444415;position:relative">
+            🛢️
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">小型石油钻井平台</div>
+        </div><div class="poi-thumb" onclick="selectPoi(20)">
+          <div class="poi-thumb-img" style="background:#ef444415;position:relative">
+            🛢️
+            <span class="poi-card-badge red">🔴</span>
+          </div>
+          <div class="poi-thumb-label">大型石油钻井平台</div>
+        </div><div class="poi-thumb" onclick="selectPoi(21)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            <img src="data:image/png;base64,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" alt="前哨站" class="poi-thumb-icon" onerror="this.style.display=&#39;none&#39;"><span class="poi-thumb-emoji-fallback" style="display:none">🏕️</span>
+            
+          </div>
+          <div class="poi-thumb-label">前哨站</div>
+        </div><div class="poi-thumb" onclick="selectPoi(22)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            ⚔️
+            
+          </div>
+          <div class="poi-thumb-label">强盗营地</div>
+        </div><div class="poi-thumb" onclick="selectPoi(23)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            🎣
+            
+          </div>
+          <div class="poi-thumb-label">小渔村</div>
+        </div><div class="poi-thumb" onclick="selectPoi(24)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            🐟
+            
+          </div>
+          <div class="poi-thumb-label">大渔村</div>
+        </div><div class="poi-thumb" onclick="selectPoi(25)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            🌾
+            
+          </div>
+          <div class="poi-thumb-label">谷仓</div>
+        </div><div class="poi-thumb" onclick="selectPoi(26)">
+          <div class="poi-thumb-img" style="background:#a78bfa15;position:relative">
+            🐴
+            
+          </div>
+          <div class="poi-thumb-label">牧场</div>
+        </div>
+    </div>
+  </div>
   </div>
 </div>
 
@@ -2613,12 +3140,11 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <div class="page-title-row">
       <div class="page-title"><span class="page-title-icon">🎬</span> 攻略视频</div>
     </div>
-    <div class="page-intro"><strong>使用场景：</strong>文字看不懂的操作，视频看一遍就会——官方实机演示 + 玩家实战录像。</div>
   </div>
   <div class="videos-container">
     <div class="video-tabs-bar">
-      <button class="vst-btn active" data-tab="official" onclick="switchVideoTab('official',this)">官方攻略</button>
-      <button class="vst-btn" data-tab="player" onclick="switchVideoTab('player',this)">玩家攻略</button>
+      <button class="vst-btn active" data-tab="official" onclick="switchVideoTab(&#39;official&#39;,this)">官方攻略</button>
+      <button class="vst-btn" data-tab="player" onclick="switchVideoTab(&#39;player&#39;,this)">玩家攻略</button>
     </div>
 
     <!-- 官方攻略：占位网格（2列，对标官网排版）-->
@@ -2659,18 +3185,343 @@ button{font-family:'Noto Serif SC',serif;cursor:pointer;}
     <!-- 搜索栏 -->
     <div class="page-search-bar" style="margin-bottom:16px">
       <div class="psb-inner">
-        <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <svg class="psb-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input class="psb-input" id="faq-search" type="text" placeholder="搜索问题关键词…" oninput="searchFaq(this.value)">
         <button class="psb-clear" onclick="clearFaqSearch()" title="清除">✕</button>
       </div>
     </div>
     <!-- 分类筛选 -->
-    <div class="faq-cat-grid" id="faq-cat-grid"></div>
-    <div class="faq-section-label" id="faq-section-label"></div>
+    <div class="faq-cat-grid" id="faq-cat-grid">
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;basics&#39;,this)">
+      <span class="fcc-icon">🎮</span>
+      <div class="fcc-name">游戏必备</div>
+      <div class="fcc-count">10 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;survival&#39;,this)">
+      <span class="fcc-icon">🏕️</span>
+      <div class="fcc-name">生存入门</div>
+      <div class="fcc-count">22 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;building&#39;,this)">
+      <span class="fcc-icon">🔨</span>
+      <div class="fcc-name">建造领地</div>
+      <div class="fcc-count">21 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;combat&#39;,this)">
+      <span class="fcc-icon">🔫</span>
+      <div class="fcc-name">战斗技巧</div>
+      <div class="fcc-count">16 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;crafting&#39;,this)">
+      <span class="fcc-icon">⚙️</span>
+      <div class="fcc-name">制作科技</div>
+      <div class="fcc-count">12 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;poi_explore&#39;,this)">
+      <span class="fcc-icon">🗺️</span>
+      <div class="fcc-name">据点探索</div>
+      <div class="fcc-count">15 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;vehicles&#39;,this)">
+      <span class="fcc-icon">🚗</span>
+      <div class="fcc-name">载具交通</div>
+      <div class="fcc-count">11 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;mode_world&#39;,this)">
+      <span class="fcc-icon">🌍</span>
+      <div class="fcc-name">模式与世界</div>
+      <div class="fcc-count">14 条</div>
+    </div>
+  
+    <div class="faq-cat-card" onclick="switchFaqCat(&#39;team&#39;,this)">
+      <span class="fcc-icon">🤝</span>
+      <div class="fcc-name">组队社交</div>
+      <div class="fcc-count">16 条</div>
+    </div>
+  </div>
+    <div class="faq-section-label" id="faq-section-label">🎮 游戏必备</div>
     <!-- 搜索结果提示 -->
     <div id="faq-search-hint" style="display:none;font-size:12px;color:var(--text-dim);margin-bottom:12px;padding:0 2px"></div>
-    <div id="faq-list"></div>
+    <div id="faq-list">
+    <div class="faq-item" id="faq-basics-0" onclick="toggleFaq(&#39;faq-basics-0&#39;)">
+      <div class="faq-q">
+        <span>游戏怎么下载？在哪里下载？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">PC端：前往失控进化官网（skjh.qq.com）或腾讯游戏平台下载 Windows 客户端；移动端：在 App Store（iOS）或各大 Android 应用商店搜索「失控进化」下载安装。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-1" onclick="toggleFaq(&#39;faq-basics-1&#39;)">
+      <div class="faq-q">
+        <span>游戏是免费的吗？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">失控进化基础游戏内容免费，可以免费下载畅玩。游戏内有皮肤等装饰性付费内容，不影响核心玩法体验。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-2" onclick="toggleFaq(&#39;faq-basics-2&#39;)">
+      <div class="faq-q">
+        <span>配置要求是什么？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">PC：<br>Intel Core i5‑7500 /AMD FX-8350，内存16G以上，Nvidia Geforce GTX 1060 5G /AMD Radeon RX 580，显存5G以上。<br><br>移动端：<br>Android 10及以上，骁龙 710 / 天玑 700 / 麒麟 970或同等芯片，运行内存6G以上</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-3" onclick="toggleFaq(&#39;faq-basics-3&#39;)">
+      <div class="faq-q">
+        <span>支持哪些平台？PC和手机可以一起玩吗？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">支持 PC（Windows）和移动端（iOS/Android），两端匹配互通。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-4" onclick="toggleFaq(&#39;faq-basics-4&#39;)">
+      <div class="faq-q">
+        <span>账号怎么注册？需要实名认证吗？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">使用腾讯账号（QQ/微信）直接登录，无需单独注册。根据国家规定，未成年用户需要完成实名认证，并受到防沉迷系统的时间限制管理。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-5" onclick="toggleFaq(&#39;faq-basics-5&#39;)">
+      <div class="faq-q">
+        <span>游戏里遇到外挂/作弊如何举报？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-official">官方</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">局内举报：<br>很抱歉给你带来了不好的游戏体验，你可直接在游戏端内通过阵亡结算页面举报该玩家，或通过游戏菜单栏的举报按钮对违规语音、建筑、范围进行举报；<br><br>局外举报：<br>可通过安全站或者联系客服进行提交线索和举报。<br>安全站链接&gt;&gt;https://skjh.qq.com/cp/a20251210safety/channel.html</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-6" onclick="toggleFaq(&#39;faq-basics-6&#39;)">
+      <div class="faq-q">
+        <span>游戏数据会在版本结算时清空吗？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-player">玩家</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">每个局内按模式设定的天数结算后，该局数据清空重置，玩家重新开始。通过结算可获得游戏内特定道具奖励。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-7" onclick="toggleFaq(&#39;faq-basics-7&#39;)">
+      <div class="faq-q">
+        <span>手机端帧率低卡顿怎么优化？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-player">玩家</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">在游戏设置中将画质调低（流畅模式）。同时清理后台App释放内存，保持设备散热良好。如设备配置较低，建议玩精简版</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-8" onclick="toggleFaq(&#39;faq-basics-8&#39;)">
+      <div class="faq-q">
+        <span>新手有没有保护期？一开始不会被打吗？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-player">玩家</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">庇护模式下领地默认有保护，相对安全。但人物本身在野外依然可以被其他玩家攻击。建议刚开始快速建好第一个基地并锁门，减少在外暴露的时间。</div>
+    </div>
+  
+    <div class="faq-item" id="faq-basics-9" onclick="toggleFaq(&#39;faq-basics-9&#39;)">
+      <div class="faq-q">
+        <span>手机端界面太小，怎么调整HUD布局？</span>
+        <div class="faq-q-right">
+          <span class="faq-src src-player">玩家</span>
+          <div class="faq-toggle">+</div>
+        </div>
+      </div>
+      <div class="faq-a">在游戏设置→操作界面中，可以自定义按键大小和位置。建议把常用的急救包、食物快捷键调到顺手的位置，大幅提升操作流畅度</div>
+    </div>
   </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TERMS（游戏术语）
+══════════════════════════════════════ -->
+<div class="page" id="page-terms">
+
+  <!-- Hero -->
+  <div class="terms-hero">
+    <div class="terms-hero-bg"></div>
+    <div class="terms-hero-eyebrow">GLOSSARY · 失控进化</div>
+    <h1 class="terms-hero-title">游戏<em>术语</em>词典</h1>
+    <p class="terms-hero-sub">选择分类，查找你不熟悉的词汇。</p>
+    <div class="terms-hero-guide">
+      <span class="terms-hero-guide-ico">👇</span>
+      <span class="terms-hero-guide-text"><strong>点击下方分类卡片</strong>，展开该分类的所有词条，再点击词条查看详细解释。</span>
+    </div>
+  </div>
+
+  <!-- 第一屏：分类大卡片 -->
+  <div class="terms-cat-grid" id="terms-cat-grid">
+    <div class="terms-cat-card" data-cat="survive" onclick="termsOpenCat(&#39;survive&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 生存</span>
+        </div>
+        <span class="terms-cat-illus-emoji">❤️</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M20 55 Q60 10 100 55 Q140 100 180 55" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3"></path><circle cx="100" cy="55" r="28" stroke="#f87171" stroke-width="1" stroke-dasharray="3 4"></circle><path d="M86 55h28M100 41v28" stroke="#f87171" stroke-width="2"></path><circle cx="30" cy="30" r="4" fill="#f87171" opacity=".4"></circle><circle cx="170" cy="80" r="6" fill="#f87171" opacity=".2"></circle></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">❤️</span>
+          <span class="terms-cat-card-name">生存</span>
+          <span class="terms-cat-card-arr" style="color:#f87171">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">健康值</span><span class="terms-cat-tag">口渴值</span><span class="terms-cat-tag">饱腹值</span><span class="terms-cat-tag">体温管理</span><span class="terms-cat-tag">辐射</span><span class="terms-cat-tag">+2</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">7 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#f87171;border-color:#f8717133;background:#f8717118">查看词条 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="terms-cat-card" data-cat="base" onclick="termsOpenCat(&#39;base&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 建造</span>
+        </div>
+        <span class="terms-cat-illus-emoji">🏗️</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M20 55 Q60 10 100 55 Q140 100 180 55" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3"></path><circle cx="100" cy="55" r="28" stroke="#f87171" stroke-width="1" stroke-dasharray="3 4"></circle><path d="M86 55h28M100 41v28" stroke="#f87171" stroke-width="2"></path><circle cx="30" cy="30" r="4" fill="#f87171" opacity=".4"></circle><circle cx="170" cy="80" r="6" fill="#f87171" opacity=".2"></circle></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">🏗️</span>
+          <span class="terms-cat-card-name">建造</span>
+          <span class="terms-cat-card-arr" style="color:#f87171">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">工具柜</span><span class="terms-cat-tag">睡袋</span><span class="terms-cat-tag">熔炉</span><span class="terms-cat-tag">分解机</span><span class="terms-cat-tag">工作台</span><span class="terms-cat-tag">+5</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">10 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#f87171;border-color:#f8717133;background:#f8717118">查看词条 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="terms-cat-card" data-cat="resource" onclick="termsOpenCat(&#39;resource&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 资源</span>
+        </div>
+        <span class="terms-cat-illus-emoji">🪙</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><polygon points="100,15 115,45 148,50 124,73 130,106 100,90 70,106 76,73 52,50 85,45" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="3 3"></polygon><circle cx="100" cy="60" r="18" stroke="#fbbf24" stroke-width="1"></circle><circle cx="40" cy="25" r="5" stroke="#fbbf24" stroke-width="1" opacity=".5"></circle><circle cx="165" cy="85" r="7" stroke="#fbbf24" stroke-width="1" opacity=".3"></circle></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">🪙</span>
+          <span class="terms-cat-card-name">资源</span>
+          <span class="terms-cat-card-arr" style="color:#fbbf24">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">废料</span><span class="terms-cat-tag">木材</span><span class="terms-cat-tag">石头</span><span class="terms-cat-tag">金属矿石</span><span class="terms-cat-tag">硫磺</span><span class="terms-cat-tag">+2</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">7 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#fbbf24;border-color:#fbbf2433;background:#fbbf2418">查看词条 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="terms-cat-card" data-cat="combat" onclick="termsOpenCat(&#39;combat&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 战斗</span>
+        </div>
+        <span class="terms-cat-illus-emoji">⚔️</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><line x1="30" y1="80" x2="120" y2="20" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="4 3"></line><polygon points="120,20 108,28 116,36" fill="#c084fc" opacity=".5"></polygon><circle cx="140" cy="60" r="20" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 4"></circle><line x1="130" y1="50" x2="150" y2="70" stroke="#c084fc" stroke-width="1.5"></line><line x1="150" y1="50" x2="130" y2="70" stroke="#c084fc" stroke-width="1.5"></line></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">⚔️</span>
+          <span class="terms-cat-card-name">战斗</span>
+          <span class="terms-cat-card-arr" style="color:#c084fc">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">科技树</span><span class="terms-cat-tag">倒地</span><span class="terms-cat-tag">爆炸物</span><span class="terms-cat-tag">偷家</span><span class="terms-cat-tag">抄家</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">5 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#c084fc;border-color:#c084fc33;background:#c084fc18">查看词条 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="terms-cat-card" data-cat="explore" onclick="termsOpenCat(&#39;explore&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 探索</span>
+        </div>
+        <span class="terms-cat-illus-emoji">🗺️</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><circle cx="100" cy="55" r="40" stroke="#67e8f9" stroke-width="1" stroke-dasharray="4 4"></circle><line x1="100" y1="15" x2="100" y2="95" stroke="#67e8f9" stroke-width=".8" opacity=".4"></line><line x1="60" y1="55" x2="140" y2="55" stroke="#67e8f9" stroke-width=".8" opacity=".4"></line><circle cx="100" cy="55" r="5" fill="#67e8f9" opacity=".6"></circle><polygon points="100,28 105,40 100,36 95,40" fill="#67e8f9" opacity=".7"></polygon></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">🗺️</span>
+          <span class="terms-cat-card-name">探索</span>
+          <span class="terms-cat-card-arr" style="color:#67e8f9">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">遗迹</span><span class="terms-cat-tag">安全区</span><span class="terms-cat-tag">辐射区</span><span class="terms-cat-tag">载具</span><span class="terms-cat-tag">科学家NPC</span><span class="terms-cat-tag">+12</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">17 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#67e8f9;border-color:#67e8f933;background:#67e8f918">查看词条 →</span>
+        </div>
+      </div>
+    </div>
+    <div class="terms-cat-card" data-cat="mode" onclick="termsOpenCat(&#39;mode&#39;)">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · 模式</span>
+        </div>
+        <span class="terms-cat-illus-emoji">🎮</span>
+        <div class="terms-cat-illus-svg"><svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><rect x="35" y="30" width="55" height="55" rx="4" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="3 3"></rect><rect x="110" y="30" width="55" height="55" rx="4" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="3 3"></rect><line x1="35" y1="57" x2="90" y2="57" stroke="#a5b4fc" stroke-width="1" opacity=".5"></line><line x1="110" y1="57" x2="165" y2="57" stroke="#a5b4fc" stroke-width="1" opacity=".5"></line><circle cx="62" cy="44" r="4" fill="#a5b4fc" opacity=".5"></circle><circle cx="137" cy="44" r="4" fill="#a5b4fc" opacity=".5"></circle></svg></div>
+      </div>
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">🎮</span>
+          <span class="terms-cat-card-name">模式</span>
+          <span class="terms-cat-card-arr" style="color:#a5b4fc">→</span>
+        </div>
+        <div class="terms-cat-card-tags"><span class="terms-cat-tag">庇护模式</span><span class="terms-cat-tag">标准模式</span><span class="terms-cat-tag">进阶模式</span><span class="terms-cat-tag">挑战模式</span><span class="terms-cat-tag">急速挑战</span><span class="terms-cat-tag">+1</span></div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">6 个词条</span>
+          <span class="terms-cat-card-cta" style="color:#a5b4fc;border-color:#a5b4fc33;background:#a5b4fc18">查看词条 →</span>
+        </div>
+      </div>
+    </div></div>
+
+  <!-- 第二屏：词条手风琴列表 -->
+  <div class="terms-detail-view" id="terms-detail-view">
+    <div class="terms-back-bar">
+      <button class="terms-back-btn" onclick="termsBackToCats()">← 所有分类</button>
+      <div class="terms-detail-hd">
+        <span class="terms-detail-icon" id="terms-detail-icon"></span>
+        <span class="terms-detail-name" id="terms-detail-name"></span>
+        <span class="terms-detail-count" id="terms-detail-count"></span>
+      </div>
+    </div>
+    <div class="terms-accordion" id="terms-accordion"></div>
+  </div>
+
 </div>
 
 <script>
@@ -3369,86 +4220,134 @@ function filterAndGoWeapons(type) {
 
 
 // ── 术语词条 ──────────────────────────────────────────────────
+// 每个分类的主题色 & SVG 装饰
+const TERM_CAT_META = {
+  survive:  { color:'#f87171', rgb:'248,113,113', svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M20 55 Q60 10 100 55 Q140 100 180 55" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="100" cy="55" r="28" stroke="#f87171" stroke-width="1" stroke-dasharray="3 4"/><path d="M86 55h28M100 41v28" stroke="#f87171" stroke-width="2"/><circle cx="30" cy="30" r="4" fill="#f87171" opacity=".4"/><circle cx="170" cy="80" r="6" fill="#f87171" opacity=".2"/></svg>` },
+  build:    { color:'#86efac', rgb:'134,239,172', svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><rect x="20" y="60" width="40" height="35" stroke="#86efac" stroke-width="1" stroke-dasharray="3 3"/><rect x="80" y="40" width="40" height="55" stroke="#86efac" stroke-width="1" stroke-dasharray="3 3"/><rect x="140" y="50" width="40" height="45" stroke="#86efac" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="95" x2="190" y2="95" stroke="#86efac" stroke-width="1" opacity=".4"/><circle cx="40" cy="50" r="3" fill="#86efac" opacity=".5"/><circle cx="160" cy="42" r="3" fill="#86efac" opacity=".5"/></svg>` },
+  resource: { color:'#fbbf24', rgb:'251,191,36',  svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><polygon points="100,15 115,45 148,50 124,73 130,106 100,90 70,106 76,73 52,50 85,45" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="3 3"/><circle cx="100" cy="60" r="18" stroke="#fbbf24" stroke-width="1"/><circle cx="40" cy="25" r="5" stroke="#fbbf24" stroke-width="1" opacity=".5"/><circle cx="165" cy="85" r="7" stroke="#fbbf24" stroke-width="1" opacity=".3"/></svg>` },
+  combat:   { color:'#c084fc', rgb:'192,132,252', svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><line x1="30" y1="80" x2="120" y2="20" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="4 3"/><polygon points="120,20 108,28 116,36" fill="#c084fc" opacity=".5"/><circle cx="140" cy="60" r="20" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 4"/><line x1="130" y1="50" x2="150" y2="70" stroke="#c084fc" stroke-width="1.5"/><line x1="150" y1="50" x2="130" y2="70" stroke="#c084fc" stroke-width="1.5"/></svg>` },
+  explore:  { color:'#67e8f9', rgb:'103,232,249', svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><circle cx="100" cy="55" r="40" stroke="#67e8f9" stroke-width="1" stroke-dasharray="4 4"/><line x1="100" y1="15" x2="100" y2="95" stroke="#67e8f9" stroke-width=".8" opacity=".4"/><line x1="60" y1="55" x2="140" y2="55" stroke="#67e8f9" stroke-width=".8" opacity=".4"/><circle cx="100" cy="55" r="5" fill="#67e8f9" opacity=".6"/><polygon points="100,28 105,40 100,36 95,40" fill="#67e8f9" opacity=".7"/></svg>` },
+  mode:     { color:'#a5b4fc', rgb:'165,180,252', svg:`<svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;"><rect x="35" y="30" width="55" height="55" rx="4" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="3 3"/><rect x="110" y="30" width="55" height="55" rx="4" stroke="#a5b4fc" stroke-width="1" stroke-dasharray="3 3"/><line x1="35" y1="57" x2="90" y2="57" stroke="#a5b4fc" stroke-width="1" opacity=".5"/><line x1="110" y1="57" x2="165" y2="57" stroke="#a5b4fc" stroke-width="1" opacity=".5"/><circle cx="62" cy="44" r="4" fill="#a5b4fc" opacity=".5"/><circle cx="137" cy="44" r="4" fill="#a5b4fc" opacity=".5"/></svg>` }
+};
+
+let currentTermCatKey = null;
+let currentTermTileIdx = null;
+
 function renderTerms() {
-  const tabsEl = document.getElementById('terms-cat-tabs');
-  const gridEl = document.getElementById('terms-grid');
-  if(!tabsEl || !gridEl) return;
-  
-  tabsEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>`
-    <button class="terms-cat-tab${key===currentTermCat?' active':''}" onclick="switchTermCat('${key}',this)">
-      <span>${cat.icon}</span>${cat.label}
-    </button>
-  `).join('');
-
-  const cat = TERMS[currentTermCat];
-  gridEl.innerHTML = cat.terms.map((t,i)=>`
-    <div class="term-chip" onclick="openTermDrawer('${currentTermCat}',${i})">
-      <span class="term-chip-ico">${t.icon||cat.icon}</span>
-      <span class="term-chip-name">${t.name}${t.src==='player'?'<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;vertical-align:middle;margin-left:5px;margin-bottom:2px;" title="待校对"></span>':''}</span>
-      <span class="term-chip-arrow">›</span>
-    </div>
-  `).join('');
-}
-
-function switchTermCat(key, el) {
-  currentTermCat = key;
-  document.querySelectorAll('.terms-cat-tab').forEach(b=>b.classList.remove('active'));
-  if(el) el.classList.add('active');
-  const cat = TERMS[key];
-  const gridEl = document.getElementById('terms-grid');
-  gridEl.style.opacity = '0';
-  setTimeout(()=>{
-    gridEl.innerHTML = cat.terms.map((t,i)=>`
-      <div class="term-chip" onclick="openTermDrawer('${key}',${i})">
-        <span class="term-chip-ico">${t.icon||cat.icon}</span>
-        <span class="term-chip-name">${t.name}${t.src==='player'?'<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;vertical-align:middle;margin-left:5px;margin-bottom:2px;" title="待校对"></span>':''}</span>
-        <span class="term-chip-arrow">›</span>
+  const gridEl = document.getElementById('terms-cat-grid');
+  if(!gridEl) return;
+  gridEl.innerHTML = Object.entries(TERMS).map(([key,cat])=>{
+    const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
+    const tags = cat.terms.slice(0,5).map(t=>`<span class="terms-cat-tag">${t.name}</span>`).join('');
+    const more = cat.terms.length > 5 ? `<span class="terms-cat-tag">+${cat.terms.length-5}</span>` : '';
+    return `
+    <div class="terms-cat-card" data-cat="${key}" onclick="termsOpenCat('${key}')">
+      <div class="terms-cat-illus">
+        <div class="terms-cat-illus-placeholder">
+          <span class="terms-cat-illus-label">插图占位 · ${cat.label}</span>
+        </div>
+        <span class="terms-cat-illus-emoji">${cat.icon}</span>
+        <div class="terms-cat-illus-svg">${meta.svg}</div>
       </div>
-    `).join('');
-    gridEl.style.opacity = '1';
-  }, 120);
+      <div class="terms-cat-body">
+        <div class="terms-cat-card-top">
+          <span class="terms-cat-card-icon">${cat.icon}</span>
+          <span class="terms-cat-card-name">${cat.label}</span>
+          <span class="terms-cat-card-arr" style="color:${meta.color}">→</span>
+        </div>
+        <div class="terms-cat-card-tags">${tags}${more}</div>
+        <div class="terms-cat-card-footer">
+          <span class="terms-cat-card-count">${cat.terms.length} 个词条</span>
+          <span class="terms-cat-card-cta" style="color:${meta.color};border-color:${meta.color}33;background:${meta.color}18">查看词条 →</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
-function openTermDrawer(catKey, termIdx) {
-  const cat = TERMS[catKey];
-  const term = cat.terms[termIdx];
-  currentTermCat = catKey;
-  currentTerm = {catKey, termIdx};
-  
-  document.getElementById('termDrawerCat').textContent = cat.icon + ' ' + cat.label;
-  document.getElementById('termDrawerName').innerHTML = `<span style='margin-right:10px'>${term.icon||cat.icon}</span>${term.name}`;
-  const srcBadge = term.src === 'player'
-    ? `<span class="src-player" style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-bottom:10px;">🗣️ 待校对 · ${term.source||'玩家社区'}</span><br>`
-    : '';
-  document.getElementById('termDrawerBody').innerHTML = srcBadge + '<p>' + term.desc + '</p>';
-  
-  // 相关词条（同分类其他词）
-  const related = cat.terms.filter((_,i) => i !== termIdx).slice(0,3);
-  const relEl = document.getElementById('termDrawerRelated');
-  if(related.length) {
-    relEl.innerHTML = `<div class="term-drawer-related-label">同类词条</div>` +
-      related.map((t,i)=>{
-        const realIdx = cat.terms.indexOf(t);
-        return `<div class="term-chip" style="margin-bottom:8px" onclick="openTermDrawer('${catKey}',${realIdx})">${t.name}<span class="term-chip-arrow">›</span></div>`;
-      }).join('');
-  } else relEl.innerHTML = '';
-  
-  // 前后导航
+function termsOpenCat(key) {
+  const cat  = TERMS[key];
+  const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
+  currentTermCat    = key;
+  currentTermCatKey = key;
+  currentTermTileIdx = null;
+
+  document.getElementById('terms-cat-grid').style.display = 'none';
+  const dv = document.getElementById('terms-detail-view');
+  dv.classList.add('visible');
+  dv.style.setProperty('--cat-color', meta.color);
+  dv.style.setProperty('--cat-rgb',   meta.rgb);
+
+  document.getElementById('terms-detail-icon').textContent  = cat.icon;
+  document.getElementById('terms-detail-name').textContent  = cat.label;
+  document.getElementById('terms-detail-count').textContent = cat.terms.length + ' 个词条';
+
+  // 词条小方卡网格
+  const accordion = document.getElementById('terms-accordion');
+  accordion.innerHTML = `
+    <div class="terms-tile-grid" id="terms-tile-grid">
+      ${cat.terms.map((t,i)=>`
+        <div class="term-tile" id="term-tile-${i}" onclick="selectTermTile(${i})">
+          <span class="term-tile-ico">${t.icon||cat.icon}</span>
+          <span class="term-tile-name">${t.name}</span>
+          <span class="term-tile-hint">点击查看</span>
+        </div>
+      `).join('')}
+    </div>
+    <div id="terms-tile-panel"></div>`;
+
+  document.getElementById('page-terms').scrollTop = 0;
+}
+
+function selectTermTile(idx) {
+  const key  = currentTermCatKey;
+  const cat  = TERMS[key];
+  const meta = TERM_CAT_META[key] || TERM_CAT_META.survive;
+  const term = cat.terms[idx];
+  currentTermTileIdx = idx;
+
+  // 高亮选中
+  document.querySelectorAll('.term-tile').forEach((el,i)=>el.classList.toggle('selected', i===idx));
+
   const total = cat.terms.length;
-  const prev = termIdx > 0 ? `<button class="term-nav-btn" onclick="openTermDrawer('${catKey}',${termIdx-1})">← ${cat.terms[termIdx-1].name}</button>` : '<span></span>';
-  const next = termIdx < total-1 ? `<button class="term-nav-btn primary" onclick="openTermDrawer('${catKey}',${termIdx+1})">${cat.terms[termIdx+1].name} →</button>` : '<span></span>';
-  document.getElementById('termNavBtns').innerHTML = prev + next;
-  
-  document.getElementById('termDrawerOverlay').classList.add('open');
-  document.getElementById('termDrawer').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const prev = idx > 0 ? `<button class="terms-panel-nav-btn" onclick="selectTermTile(${idx-1})">← ${cat.terms[idx-1].name}</button>` : '<span></span>';
+  const next = idx < total-1 ? `<button class="terms-panel-nav-btn next" onclick="selectTermTile(${idx+1})">${cat.terms[idx+1].name} →</button>` : '<span></span>';
+
+  document.getElementById('terms-tile-panel').innerHTML = `
+    <div class="terms-detail-panel" style="border-color:${meta.color}44">
+      <div class="terms-detail-panel-hd">
+        <span class="terms-detail-panel-ico">${term.icon||cat.icon}</span>
+        <span class="terms-detail-panel-name">${term.name}</span>
+        <button class="terms-detail-panel-close" onclick="closeTermTilePanel()">✕</button>
+      </div>
+      <div class="terms-detail-panel-divider" style="background:linear-gradient(90deg,${meta.color},transparent)"></div>
+      <div class="terms-detail-panel-desc">${term.desc||''}</div>
+      <div class="terms-detail-panel-nav">${prev}${next}</div>
+    </div>`;
+
+  // 滚动到详情区
+  setTimeout(()=>{
+    document.getElementById('terms-tile-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }, 80);
 }
 
-function closeTermDrawer() {
-  document.getElementById('termDrawerOverlay').classList.remove('open');
-  document.getElementById('termDrawer').classList.remove('open');
-  document.body.style.overflow = '';
+function closeTermTilePanel() {
+  document.getElementById('terms-tile-panel').innerHTML = '';
+  document.querySelectorAll('.term-tile').forEach(el=>el.classList.remove('selected'));
+  currentTermTileIdx = null;
 }
+
+function termsBackToCats() {
+  document.getElementById('terms-cat-grid').style.display = '';
+  document.getElementById('terms-detail-view').classList.remove('visible');
+  document.getElementById('terms-accordion').innerHTML = '';
+  currentTermCatKey  = null;
+  currentTermTileIdx = null;
+}
+
+function toggleTermRow(){}
+function openTermSheet(){}
+function closeTermSheet(){}
 
 // ── 武器搜索 ──────────────────────────────────────────────────
 function filterWeaponsBySearch(q) {
@@ -3926,14 +4825,10 @@ function switchSpecTab(tab, el) {
 
 <!-- ══ 常驻悬浮：客服中心 + 安全站 ══ -->
 <div style="position:fixed;right:24px;bottom:100px;z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
-  <a href="https://kf.qq.com/touch/kfgames/A11267/v2/PCweb/conf/index.html#/home" target="_blank" rel="noopener"
-     style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(30,30,40,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(8px);transition:background .15s;"
-     onmouseover="this.style.background='rgba(50,50,70,.98)'" onmouseout="this.style.background='rgba(30,30,40,.92)'">
+  <a href="https://kf.qq.com/touch/kfgames/A11267/v2/PCweb/conf/index.html#/home" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(30,30,40,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(8px);transition:background .15s;" onmouseover="this.style.background=&#39;rgba(50,50,70,.98)&#39;" onmouseout="this.style.background=&#39;rgba(30,30,40,.92)&#39;">
     <span style="font-size:15px;">🎧</span> 客服中心
   </a>
-  <a href="https://skjh.qq.com/cp/a20251210safety/index.html" target="_blank" rel="noopener"
-     style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(30,30,40,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(8px);transition:background .15s;"
-     onmouseover="this.style.background='rgba(50,50,70,.98)'" onmouseout="this.style.background='rgba(30,30,40,.92)'">
+  <a href="https://skjh.qq.com/cp/a20251210safety/index.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(30,30,40,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(8px);transition:background .15s;" onmouseover="this.style.background=&#39;rgba(50,50,70,.98)&#39;" onmouseout="this.style.background=&#39;rgba(30,30,40,.92)&#39;">
     <span style="font-size:15px;">🛡️</span> 安全中心
   </a>
 </div>
@@ -3976,5 +4871,7 @@ function closeMpBanner(){
 }
 </script>
 
-</body>
-</html>
+<!-- ══ （术语详情已改为页内手风琴，无需全局弹层）══ -->
+
+
+</body></html>
